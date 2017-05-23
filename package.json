@@ -1,0 +1,27 @@
+{
+  "name": "qx-cli",
+  "version": "0.1.0",
+  "description": "The command line interface for qooxdoo developers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qooxdoo/qx-cli.git"
+  },
+  "keywords": [
+    "qooxdoo",
+    "qooxdoo-contrib",
+    "cli"
+  ],
+  "author": "Christian Boulanger and others",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qooxdoo/qx-cli/issues"
+  },
+  "homepage": "https://github.com/qooxdoo/qx-cli#readme",
+  "dependencies": {
+    "yargs": "^8.0.1"
+  }
+}
