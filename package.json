@@ -15,13 +15,39 @@
     "qooxdoo-contrib",
     "cli"
   ],
-  "author": "Christian Boulanger and others",
+  "author": "Christian Boulanger, John Spackmann and others",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/qooxdoo/qx-cli/issues"
   },
   "homepage": "https://github.com/qooxdoo/qx-cli#readme",
   "dependencies": {
+    "async": "^2.4.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "babel-traverse": "^6.24.1",
+    "babel-types": "^6.24.1",
+    "conf": "^1.0.0",
+    "download": "^6.0.0",
+    "flat-cache": "^1.2.2",
+    "github-api": "^3.0.0",
+    "qxcompiler": "^0.1.1",
+    "rimraf": "^2.6.1",
+    "semver": "^5.3.0",
     "yargs": "^8.0.1"
+  },
+  "devDependencies": {},
+  "bin": {
+    "qx": "qx"
+  },
+  "preferGlobal": "true",
+  "babel":{ 
+    "ignore": false,
+    "presets":[["env",{
+      "targets":{"node": "current"},
+      "useBuiltIns" : true
+    }]]
   }
 }

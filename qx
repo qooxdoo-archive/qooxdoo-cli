@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+// babel transpiler
+require('babel-register')({ 
+  //"ignore": false, // important for global modules, doesn't work yet
+  "presets":[
+    ["env",{
+      "targets":{"node": "current"},
+      "useBuiltIns" : true
+    }]
+  ]
+});
+require('babel-polyfill');
+
+// main config
+var title = "qooxdoo command line interface";
+title = "\n" + title + "\n" + "=".repeat(title.length) + "\n\n";
+title +=
+`Typical usage:
+  qx <commands> [options]
+  
+Type qx <command> --help for options and subcommands.`
+
+require('yargs')
+  .locale("en")
+  .commandDir('commands')
+  .usage(title)
+  .demandCommand()
+  .strict()
+  .showHelpOnFail()
+  .argv;
