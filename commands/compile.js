@@ -3,7 +3,7 @@
  */
 const Compile = require("../lib/compile_utils");
 module.exports = {
-  command   : "compile [options] [configFile]",
+  command   : "compile [configFile]",
   describe  : "compiles the current application, using compile.json",
   builder   : {
     "all-targets": {

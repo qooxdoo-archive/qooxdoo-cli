@@ -1,17 +1,5 @@
 #!/usr/bin/env node
 
-// babel transpiler
-require('babel-register')({ 
-  //"ignore": false, // important for global modules, doesn't work yet
-  "presets":[
-    ["env",{
-      "targets":{"node": "current"},
-      "useBuiltIns" : true
-    }]
-  ]
-});
-require('babel-polyfill');
-
 // main config
 var title = "qooxdoo command line interface";
 title = "\n" + title + "\n" + "=".repeat(title.length) + "\n\n";
