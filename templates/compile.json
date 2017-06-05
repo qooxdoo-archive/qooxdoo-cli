@@ -26,10 +26,12 @@
 
   "libraries": [
     {
-      "path": "$qxpath/framework"
+      "path": "$qxpath/framework",
+      "name": "qx"
     },
     {
-      "path": "."
+      "path": ".",
+      "name": "$namespace"
     }
   ]
 }
