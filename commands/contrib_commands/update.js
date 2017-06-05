@@ -6,7 +6,7 @@ const Repository = require('github-api/dist/components/Repository');
 
 module.exports = {
   command   : 'update',
-  describe  : 'updates information on contrib libraries from github.',
+  describe  : 'updates information on contrib libraries from github. Has to be called before the other commands.',
   builder   : {},
   handler   : async function(argv){
     const config         = new Conf();

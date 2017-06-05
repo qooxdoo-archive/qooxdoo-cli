@@ -7,21 +7,32 @@ Alpha/Proof-of-concept. Everything can and will change.
 
 ## Installation (Testing only!)
 - Clone or download the repository from GitHub.
-- go into the project folder and `npm install`
-- `npm install -g` doesn't work yet (something with babel-register and global installs). 
-  You need to call the `qx` executable with `node path/to/qx <commands and options>`
+```
+cd qx-cli
+npm install
+```
+- In order to have a globally callable executable, do the following (Linux/Mac):
+```
+pushd /usr/local/bin
+sudo ln -s path/to/qx-cli/qx
+popd
+```
+- If you want to use an unreleased version of qxcompiler, download it and 
+  `npm link path/to/qxcompiler` from the `qx-cli` directory.
 
-The following is just for convenience and reproduceability during the testing phase:
+Please use the following setup during the testing phase:
 - Create a `test` directory inside the `qx-cli` directory and `cd` to it.
-- Download a fresh copy of the master version of qooxdoo framework to a 
-  subdirectory named `qooxdoo` in the `test` directory:
+- Download a fresh copy of the master version of https://github.com/johnspackman/qooxdoo
+  framework into the `test` directory and rename it to `qooxdoo`.
 
 ## Example command line usage
 In the `test` directory, do the following:
-- `node ../qx create foo`: creates the foo application skeleton
-- `cd foo`
-- `node ../../qx compile`: compile the application, using the compile.json default
-  configuration values
+```
+qx create foo # creates the foo application skeleton
+cd foo
+qx compile # compile the application, using the compile.json default configuration values
+qx conntrib install johnspackman/UploadMgr # instal UploadMgr contrib library 
+```
  
 ## TODO
 - make it work :-) 
@@ -81,6 +92,25 @@ Options:
                                                           [default: "./qooxdoo"]
   -v, --verbose    verbose logging
   
+qx contrib <command> [options]
+
+Commands:
+  install  installs the latest compatible release of a contrib library (as per
+           Manifest.json). Use "-r <release tag>" to install this particular
+           release.
+  list     if no repository name is given, lists all available contribs that are
+           compatible with the project's qooxdoo version ("--all" lists
+           incompatible ones as well). Otherwise, list all releases of this
+           contrib library.
+  remove   removes a contrib library from the configuration.
+  update   updates information on contrib libraries from github. Has to be called
+           before the other commands. 
+
+Options:
+  -a, --all      disable filters (for example, also show incompatible versions)
+  -r, --release  use a specific release tag instead of the tag of the latest
+                 compatible release
+  -v, --verbose  verbose logging
 
 ```
 
