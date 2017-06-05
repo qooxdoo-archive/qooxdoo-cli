@@ -16,6 +16,7 @@ The following is just for convenience and reproduceability during the testing ph
   subdirectory named `qooxdoo` in the `test` directory:
 
 ## Example command line usage
+In the `test` directory, do the following:
 - `node ../qx create foo`: creates the foo application skeleton
 - `cd foo`
 - `node ../../qx compile`: compile the application, using the compile.json default
