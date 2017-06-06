@@ -6,7 +6,7 @@ This command line utility allows you create, manage and build qooxdoo applicatio
 Alpha/Proof-of-concept. Everything can and will change.
 
 ## Prerequisites
-- Currently requires NodeJS v7 or 8. The released version will be transpiles to support earlier node versions
+- Currently requires NodeJS v7 or 8. The released version will be transpiled to support earlier node versions
 
 ## Installation (Testing only!)
 - Clone or download the repository from GitHub.
