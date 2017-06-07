@@ -43,6 +43,9 @@ qx conntrib install johnspackman/UploadMgr # instal UploadMgr contrib library
 - install qx as global executable
 
 ## Documemtation
+
+### Commands
+
 ```
 Typical usage:
   qx <commands> [options]
@@ -117,6 +120,16 @@ Options:
 
 ```
 
+### How to list get your contrib library listed with `qx contrib list`
+
+- The libraries **must** have a [GitHub topic](https://help.github.com/articles/about-topics/)
+  `qooxdoo-contrib` in order to be found and listed.
+- The tool will only show **[releases](https://help.github.com/articles/about-releases/)**
+  not branches. The releases (tags) **should** be named in
+  [semver-compatible format](http://semver.org/) (X.Y.Z). They **can** start with a "v"
+  (for "version").
+- The libraries **must** have a `Manifest.json` file in the root directory of the
+  repository. Make sure to keep the "qooxdoo-version" key up to date. You **should** use a [semver range](https://github.com/npm/node-semver#ranges) string instead of the legacy array (`["4.1","5.0"]`), which however is still supporte.
 
 ## Resources:
 - https://nodejs.org/api/
