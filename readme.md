@@ -14,11 +14,10 @@ Alpha/Proof-of-concept. Everything can and will change.
 cd qx-cli
 npm install
 ```
-- In order to have a globally callable executable, do the following (Linux/Mac):
+- In order to have a globally callable executable, do the following:
 ```
-pushd /usr/local/bin
-sudo ln -s path/to/qx-cli/qx
-popd
+cd qx-cli
+npm link
 ```
 - If you want to use an unreleased version of qxcompiler, download it and 
   `npm link path/to/qxcompiler` from the `qx-cli` directory.
