@@ -37,9 +37,9 @@ qx conntrib install johnspackman/UploadMgr # instal UploadMgr contrib library
 ```
  
 ## TODO
-- make it work :-) 
-- create an npm installable package
-- install qx as global executable
+- [ ] make it work, i.e., compile :-) 
+- [ ] create an npm installable package
+- [x] install qx as global executable
 
 ## Documemtation
 
