@@ -101,10 +101,11 @@ exports.handler = function (argv) {
     
     console.log(">>> Adapting skeleton for qxcompiler...");
     // Copy over adapted compile.json template
+	// Copy over adapted compile.json template
     let compile_json_path = `${path.dirname(__dirname)}/templates/compile.json`;
     let compile_json_content = fs.readFileSync(compile_json_path,"utf-8")
     .replace(/\$namespace/g,namespace)
-    .replace(/\$qxpath/g,path.resolve(qxpath));
+    .replace(/\$qxpath/g,path.resolve(qxpath).replace(new RegExp('\\' + path.sep, 'g'), '/'));
     fs.writeFileSync(`${out}/${namespace}/compile.json`, compile_json_content, "utf-8");
     
     console.log(">>> Done.");
