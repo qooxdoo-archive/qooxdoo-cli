@@ -54,12 +54,15 @@ exports.builder = function (yargs) {
     .option('v', {
         alias: 'verbose',
         describe: 'verbose logging'
-    })     
+    })
+    .option('legacy', {
+        describe: 'keep legacy python toolchain files'
+    })  
     .showHelpOnFail()
 }
 exports.handler = function (argv) {
   
-  let { qxpath, type, out, namespace, applicationname, verbose } = argv;
+  let { qxpath, type, out, namespace, applicationname, verbose, legacy } = argv;
   const script_path = `${qxpath}/tool/bin/create-application.py`;
   if ( ! fs.existsSync(script_path) ){
     console.error("Cannot find create-application.py script. Check your --qxpath value.");
@@ -91,11 +94,13 @@ exports.handler = function (argv) {
     if( verbose) {
         console.log("Deleted node_modules");
     }
-    let files = ["config.json","generate.py","Gruntfile.js","package.json"];
-    for( let file of files){
-      fs.unlinkSync(`${out}/${namespace}/${file}`);
-      if( verbose) {
-        console.log(`Deleted ${file}`);
+    if( ! legacy ) {
+      let files = ["config.json","generate.py","Gruntfile.js","package.json"];
+      for( let file of files){
+        fs.unlinkSync(`${out}/${namespace}/${file}`);
+        if( verbose) {
+          console.log(`Deleted ${file}`);
+        }
       }
     }
     
