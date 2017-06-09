@@ -94,14 +94,15 @@ exports.handler = function (argv) {
     if( verbose) {
         console.log("Deleted node_modules");
     }
+    let files = ["Gruntfile.js","package.json","package-lock.json"];
     if( ! legacy ) {
-      let files = ["config.json","generate.py","Gruntfile.js","package.json"];
-      for( let file of files){
-        fs.unlinkSync(`${out}/${namespace}/${file}`);
-        if( verbose) {
-          console.log(`Deleted ${file}`);
-        }
-      }
+      files.concat(["config.json","generate.py"]);
+    }
+    for( let file of files){
+      let filePath = `${out}/${namespace}/${file}`;
+      fs.existsSync(filePath)
+        && fs.unlinkSync(filePath) 
+        || verbose &&  console.log(`Deleted ${file}`);
     }
     
     console.log(">>> Adapting skeleton for qxcompiler...");
