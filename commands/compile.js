@@ -1,7 +1,26 @@
+/* ************************************************************************
+
+   qooxdoo - the new era of web development
+
+   http://qooxdoo.org
+
+   Copyright:
+     2017 Zenesis Ltd
+
+   License:
+     MIT: https://opensource.org/licenses/MIT
+     See the LICENSE file in the project's top-level directory for details.
+
+   Authors:
+     * John Spackman (john.spackman@zenesis.com, @johnspackman)
+
+************************************************************************ */
+
 /**
- * @author John Spackmann @johnspackmann#
+ * Command to handle compilation of the current project
  */
-const Compile = require("../lib/compile_utils");
+require("../lib/qxcli");
+
 module.exports = {
   command   : "compile [configFile]",
   describe  : "compiles the current application, using compile.json",
@@ -75,24 +94,8 @@ module.exports = {
     }
   },
   handler   : async function(argv){
-
-    // TODO: DRY redundant code
     try {
-      Compile.parse(argv, function(err, config) {
-        if (err)
-          throw new Error("Error: " + err);
-        if (!config)
-          throw new Error("Error: Cannot find any configuration");
-        Compile.createMakerFromConfig(config, function(err, maker) {
-          if (err)
-            throw new Error("Error: " + err);
-
-          if (!maker)
-            throw new Error("Error: Cannot find anything to make");
-          maker.make(function() {});
-        });
-      });
-      
+      return new qxcli.commands.Compile(argv).process();
     } catch (e) {
       console.error(e);
     }
