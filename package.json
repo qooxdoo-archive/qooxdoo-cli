@@ -15,7 +15,7 @@
     "qooxdoo-contrib",
     "cli"
   ],
-  "author": "Christian Boulanger, John Spackmann and others",
+  "author": "Christian Boulanger, John Spackman and others",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/qooxdoo/qx-cli/issues"
@@ -34,9 +34,6 @@
     "rimraf": "^2.6.1",
     "semver": "^5.3.0",
     "yargs": "^8.0.1"
-  },
-  "devDependencies": {
-    "promisify-node": "^0.4.0"
   },
   "bin": {
     "qx": "qx"

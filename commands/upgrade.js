@@ -24,7 +24,7 @@ const qx = require("../lib/qxcli.js");
 
 exports.command = "upgrade [options]";
 exports.desc = "upgrades a qooxdoo application";
-exports.usage = "Upgrades a qooxdoo application.";
+exports.usage = "upgrade";
 exports.builder = function (yargs) {
   return yargs
     .option('v', {

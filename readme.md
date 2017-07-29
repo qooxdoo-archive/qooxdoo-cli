@@ -6,7 +6,7 @@ This command line utility allows you create, manage and build qooxdoo applicatio
 Alpha/Proof-of-concept. Everything can and will change.
 
 ## Prerequisites
-- Currently requires NodeJS v7 or 8. The released version will be transpiled to support earlier node versions
+- Currently requires NodeJS v8. The released version will be transpiled to support earlier node versions
 
 ## Installation (Testing only!)
 - Clone or download the repository from GitHub.
@@ -22,22 +22,16 @@ npm link
 - If you want to use an unreleased version of qxcompiler, download it and 
   `npm link path/to/qxcompiler` from the `qx-cli` directory.
 
-Please use the following setup during the testing phase:
-- Create a `test` directory inside the `qx-cli` directory and `cd` to it.
-- Download a fresh copy of the master version of https://github.com/johnspackman/qooxdoo
-  framework into the `test` directory and rename it to `qooxdoo`.
-
 ## Example command line usage
-In the `test` directory, do the following:
 ```
 qx create foo # creates the foo application skeleton
 cd foo
 qx compile # compile the application, using the compile.json default configuration values
-qx conntrib install johnspackman/UploadMgr # instal UploadMgr contrib library 
+qx conntrib install johnspackman/UploadMgr # install UploadMgr contrib library 
 ```
  
 ## TODO
-- [ ] make it work, i.e., compile :-) 
+- [x] make it work, i.e., compile :-) 
 - [ ] create an npm installable package
 - [x] install qx as global executable
 
@@ -55,7 +49,8 @@ Commands:
   compile [options] [configFile]       compiles the current application, using
                                        compile.json
   contrib <command> [options]          manages qooxdoo contrib libraries
-  create <application name> [options]  creates a qooxdoo application skeleton>
+  create <application name> [options]  creates a qooxdoo application skeleton
+  upgrade [options]                    upgrades a qooxdoo application
 
 
 qx compile [options] [configFile]
@@ -74,7 +69,7 @@ Options:
                                                                         [string]
   --app-name                sets the name of the current application    [string]
   --library                 adds a library                               [array]
-  --continuous              enables continuous compilation             [boolean]
+  --watch                   enables continuous compilation             [boolean]
   --verbose                 enables additional progress output to console
                                                                        [boolean]
 
@@ -118,6 +113,12 @@ Options:
   -v, --verbose  verbose logging
 
 ```
+
+qx upgrade [options]
+
+Options:
+  -v, --verbose  verbose logging
+
 
 ### How to list get your contrib library listed with `qx contrib list`
 
