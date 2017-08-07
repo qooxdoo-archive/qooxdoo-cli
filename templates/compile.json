@@ -25,7 +25,7 @@
   ],
 
   "libraries": [
-    "path": "$qxpath/framework",
-    "path": "."
+    "$qxpath/framework",
+    "."
   ]
 }

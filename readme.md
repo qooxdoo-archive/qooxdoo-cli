@@ -7,20 +7,52 @@ Alpha/Proof-of-concept. Everything can and will change.
 
 ## Prerequisites
 - Currently requires NodeJS v8. The released version will be transpiled to support earlier node versions
+- ImageMagick
 
-## Installation (Testing only!)
-- Clone or download the repository from GitHub.
+## Installation
+- Install pre-requisites:
 ```
+https://github.com/qooxdoo/qooxdoo.git
+sudo yum install ImageMagick
+```
+
+- Install qx-cli, create a sample application and compile it
+```
+npm install -g qx-cli
+qx create myapp
+cd myapp
+qx compile
+```
+
+Note that `qx-cli` needs to be able to find the `qooxdoo` repo that you cloned from github - in the example above,
+it finds it because it discovers a `qooxdoo` directory, but if you place your `qooxdoo` directory elsewhere you
+should use this syntax to create an application:
+```
+qx create myapp --qxpath /path/to/qooxdoo/repo
+```
+
+## Installation for Development
+- Install pre-requisites:
+```
+https://github.com/qooxdoo/qooxdoo.git
+sudo yum install ImageMagick
+```
+
+- Install qx-cli 
+```
+git clone https://github.com/qooxdoo/qx-cli
 cd qx-cli
 npm install
 ```
+
 - In order to have a globally callable executable, do the following:
 ```
-cd qx-cli
 npm link
 ```
+
 - If you want to use an unreleased version of qxcompiler, download it and 
   `npm link path/to/qxcompiler` from the `qx-cli` directory.
+
 
 ## Example command line usage
 ```
