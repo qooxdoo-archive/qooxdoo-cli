@@ -6,16 +6,35 @@ This command line utility allows you create, manage and build qooxdoo applicatio
 Alpha/Proof-of-concept. Everything can and will change.
 
 ## Prerequisites
-- Currently requires NodeJS v8. The released version will be transpiled to support earlier node versions
-- ImageMagick
+- **Node** Currently requires NodeJS v8. The released version will be transpiled to support earlier node versions, but whichever
+version you choose to use we recommend you consider `nvm` to ease installing and switching between node versions - you
+can find the Linux version at https://github.com/creationix/nvm and there is a version for Windows at 
+https://github.com/coreybutler/nvm-windows
+
+Install `nvm` and then:
+
+```
+nvm install 8.2.1
+nvm use 8.2.1
+```
+
+- **Qooxdoo** - you need a clone of the Qooxdoo repository - automatic installation is coming (and will be part of the
+6.0 release) but for now you need to make sure you clone the repo yourself:
+
+```
+git clone https://github.com/qooxdoo/qooxdoo.git
+```
+  
+- **Python v2** - you still need Python v2, again this will go soon but for now please install a recent version 2 (not v3) of
+    python from https://www.python.org/downloads/.  
+    
+    **NOTE** If you're on Windows, make sure you add Python to your PATH
+     
+- **ImageMagick** - without ImageMagick, your resources cannot be analysed; you can install from `yum` or `apt-get`, and if you're
+on Windows you can run the setup program at https://www.imagemagick.org/script/binary-releases.php
+
 
 ## Installation
-- Install pre-requisites:
-```
-https://github.com/qooxdoo/qooxdoo.git
-sudo yum install ImageMagick
-```
-
 - Install qx-cli, create a sample application and compile it
 ```
 npm install -g qx-cli
@@ -32,12 +51,6 @@ qx create myapp --qxpath /path/to/qooxdoo/repo
 ```
 
 ## Installation for Development
-- Install pre-requisites:
-```
-https://github.com/qooxdoo/qooxdoo.git
-sudo yum install ImageMagick
-```
-
 - Install qx-cli 
 ```
 git clone https://github.com/qooxdoo/qx-cli
