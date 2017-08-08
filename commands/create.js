@@ -56,13 +56,16 @@ exports.builder = function (yargs) {
         describe: 'verbose logging'
     })
     .option('legacy', {
-        describe: 'keep legacy python toolchain files'
+        describe: 'keep legacy python toolchain files',
+		default: false
     })  
     .showHelpOnFail()
 }
 exports.handler = function (argv) {
   
   let { qxpath, type, out, namespace, applicationname, verbose, legacy } = argv;
+
+
   const script_path = `${qxpath}/tool/bin/create-application.py`;
   if ( ! fs.existsSync(script_path) ){
     console.error("Cannot find create-application.py script. Check your --qxpath value.");
@@ -95,9 +98,11 @@ exports.handler = function (argv) {
         console.log("Deleted node_modules");
     }
     let files = ["Gruntfile.js","package.json","package-lock.json"];
-    if( ! legacy ) {
-      files.concat(["config.json","generate.py"]);
+
+    if( !legacy ) {
+      files = files.concat(["config.json","generate.py"]);
     }
+
     for( let file of files){
       let filePath = `${out}/${namespace}/${file}`;
       fs.existsSync(filePath)
