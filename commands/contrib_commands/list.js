@@ -21,7 +21,7 @@ module.exports = {
         console.error("Please run qx-contrib update first.");
         process.exit();
       }
-      let qooxdoo_path = await contrib_utils.getQooxdooPath();
+      let qooxdoo_path = await contrib_utils.getQooxdooPath(argv);
       if(argv.verbose) console.log(`>>> qooxdoo path:     ${qooxdoo_path}`);
       let qooxdoo_version = contrib_utils.getQooxdooVersion(qooxdoo_path);
       if(argv.verbose) console.log(`>>> qooxdoo version:  ${qooxdoo_version}`);
