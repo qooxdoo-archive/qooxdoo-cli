@@ -15,7 +15,7 @@ module.exports = {
 
     // qooxdoo-contrib repositories
     console.log("Searching for repositories...");
-    const auth = {} //{ token: config.get("github.token") };
+    const auth = { token: config.get("github.token") };
     const search = new Search({}, auth);
     var result = await search.forRepositories({q:'topic:qooxdoo-contrib'});
     var repos = result.data;
