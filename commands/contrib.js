@@ -11,6 +11,10 @@ exports.builder = function (yargs) {
         alias: 'release',
         describe: 'use a specific release tag instead of the tag of the latest compatible release'
     })
+    .option('t', {
+        alias: 'token',
+        describe: 'adds a GitHub personal access token to calls to GitHub'
+    })     
     .option('v', {
         alias: 'verbose',
         describe: 'verbose logging'

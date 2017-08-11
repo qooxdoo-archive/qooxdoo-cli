@@ -1,7 +1,6 @@
 'use strict';
 const Cache = require('../../lib/cache');
 const contrib_utils = require('../../lib/contrib_utils');
-const Conf= require('conf');
 const semver = require('semver');
 const fs = require('fs');
 const path = require('path');
@@ -12,7 +11,6 @@ module.exports = {
   describe  : 'if no repository name is given, lists all available contribs that are compatible with the project\'s qooxdoo version ("--all" lists incompatible ones as well). Otherwise, list all releases of this contrib library.',
   builder   : {},
   handler   : async function(argv){
-    const config         = new Conf();
     const repo_cache     = new Cache('repos');
     const releases_cache = new Cache('releases');
 

@@ -1,6 +1,5 @@
 const Cache = require('../../lib/cache');
 const contrib_utils = require('../../lib/contrib_utils');
-const Conf= require('conf');
 const download = require('download');
 const os = require('os');
 const fs = require('fs');
@@ -12,7 +11,6 @@ module.exports = {
   describe  : 'installs the latest compatible release of a contrib library (as per Manifest.json). Use "-r <release tag>" to install this particular release.',
   builder   : {},
   handler   : async function(argv){
-    const config         = new Conf();
     const repo_cache     = new Cache('repos');
     const releases_cache = new Cache('releases');
 
