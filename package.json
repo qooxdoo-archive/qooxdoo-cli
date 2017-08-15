@@ -1,6 +1,6 @@
 {
   "name": "qx-cli",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "The command line interface for qooxdoo developers",
   "main": "index.js",
   "scripts": {
