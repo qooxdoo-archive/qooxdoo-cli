@@ -30,8 +30,7 @@ git clone https://github.com/qooxdoo/qooxdoo.git
     
     **NOTE** If you're on Windows, make sure you add Python to your PATH
      
-- **ImageMagick** - without ImageMagick, your resources cannot be analysed; you can install from `yum` or `apt-get`, and if you're
-on Windows you can run the setup program at https://www.imagemagick.org/script/binary-releases.php
+(Note that there is no longer a dependency on ImageMagick)
 
 
 ## Installation
