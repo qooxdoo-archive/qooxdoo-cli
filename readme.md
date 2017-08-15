@@ -8,14 +8,14 @@ Alpha/Proof-of-concept. Everything can and will change.
 ## Prerequisites
 - **Node** Currently requires NodeJS v8. The released version will be transpiled to support earlier node versions, but whichever
 version you choose to use we recommend you consider `nvm` to ease installing and switching between node versions - you
-can find the Linux version at https://github.com/creationix/nvm and there is a version for Windows at 
+can find the Linux version at http://nvm.sh and there is a version for Windows at 
 https://github.com/coreybutler/nvm-windows
 
 Install `nvm` and then:
 
 ```
-nvm install 8.2.1
-nvm use 8.2.1
+nvm install 8
+nvm use 8
 ```
 
 - **Qooxdoo** - you need a clone of the Qooxdoo repository - automatic installation is coming (and will be part of the
