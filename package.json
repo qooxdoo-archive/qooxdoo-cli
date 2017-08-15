@@ -24,7 +24,6 @@
   "dependencies": {
     "async": "^2.4.1",
     "chokidar": "^1.7.0",
-    "conf": "^1.0.0",
     "download": "^6.0.0",
     "flat-cache": "^1.2.2",
     "github-api": "^3.0.0",

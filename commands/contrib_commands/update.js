@@ -1,6 +1,5 @@
 'use strict';
 const Cache = require('../../lib/cache');
-const Conf  = require('conf');
 const Search = require('github-api/dist/components/Search');
 const Repository = require('github-api/dist/components/Repository');
 
@@ -9,13 +8,15 @@ module.exports = {
   describe  : 'updates information on contrib libraries from github. Has to be called before the other commands.',
   builder   : {},
   handler   : async function(argv){
-    const config         = new Conf();
     const repo_cache     = new Cache('repos');
     const releases_cache = new Cache('releases');
 
     // qooxdoo-contrib repositories
     console.log("Searching for repositories...");
-    const auth = {} //{ token: config.get("github.token") };
+    const auth = { }
+    if (argv.token) {
+      auth.token = argv.token
+    }
     const search = new Search({}, auth);
     var result = await search.forRepositories({q:'topic:qooxdoo-contrib'});
     var repos = result.data;
