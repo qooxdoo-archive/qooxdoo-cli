@@ -175,6 +175,11 @@ Options:
 - The libraries **must** have a `Manifest.json` file in the root directory of the
   repository. Make sure to keep the "qooxdoo-version" key up to date. You **should** use a [semver range](https://github.com/npm/node-semver#ranges) string instead of the legacy array (`["4.1","5.0"]`), which however is still supporte.
 
+
+### compile.json
+Documentation for the compile.json format is [docs/compile-json.md](docs/compile-json.md)
+
+
 ## Resources:
 - https://nodejs.org/api/
 - http://yargs.js.org/docs/ (used to parse command line arguments and as code architecture)
