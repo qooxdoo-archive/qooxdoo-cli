@@ -22,10 +22,20 @@ module.exports = {
     var result = await search.forRepositories({q:'topic:qooxdoo-contrib'});
     var repos = result.data;
     let names = [];
+    let repo_name = argv._[2];
+    
+    // if no repo name has been given, clear the repo cache
+    if( ! repo_name ) {
+      repo_cache.clear();
+    }
     
     // iterate over repositories and releases
     for ( let repo of repos ) {
       let name = repo.full_name;
+      
+      // if a repository name has been given, only update this repo
+      if(repo_name && name != repo_name) continue;
+      
       names.push(name);
       let repository = new Repository(name, auth);
       // get releases
