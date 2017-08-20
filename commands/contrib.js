@@ -18,7 +18,11 @@ exports.builder = function (yargs) {
     .option('v', {
         alias: 'verbose',
         describe: 'verbose logging'
-    })     
+    })
+    .option('q', {
+        alias: 'quiet',
+        describe: 'no output'
+    })       
     .demandCommand()
     .showHelpOnFail()
 }
