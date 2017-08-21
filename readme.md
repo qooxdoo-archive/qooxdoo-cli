@@ -13,7 +13,7 @@ https://github.com/coreybutler/nvm-windows
 
 Install `nvm` and then:
 
-```
+```bash
 nvm install 8
 nvm use 8
 ```
@@ -21,7 +21,7 @@ nvm use 8
 - **Qooxdoo** - you need a clone of the Qooxdoo repository - automatic installation is coming (and will be part of the
 6.0 release) but for now you need to make sure you clone the repo yourself:
 
-```
+```bash
 git clone https://github.com/qooxdoo/qooxdoo.git
 ```
   
@@ -35,7 +35,7 @@ git clone https://github.com/qooxdoo/qooxdoo.git
 
 ## Installation
 - Install qx-cli, create a sample application and compile it
-```
+```bash
 npm install -g qx-cli
 qx create myapp
 cd myapp
@@ -51,14 +51,14 @@ qx create myapp --qxpath /path/to/qooxdoo/repo
 
 ## Installation for Development
 - Install qx-cli 
-```
+```bash
 git clone https://github.com/qooxdoo/qx-cli
 cd qx-cli
 npm install
 ```
 
 - In order to have a globally callable executable, do the following:
-```
+```bash
 npm link
 ```
 
@@ -67,11 +67,17 @@ npm link
 
 
 ## Example command line usage
-```
-qx create foo # creates the foo application skeleton
-cd foo
-qx compile # compile the application, using the compile.json default configuration values
-qx conntrib install johnspackman/UploadMgr # install UploadMgr contrib library 
+```bash
+qx create myapp # creates the foo application skeleton
+cd myapp
+
+# (optional) install contrib libraries
+qx contrib update # updates the local cache with information on available contribs 
+qx contrib list # lists contribs compatible with myapp's qooxdoo version, determine installation candidate
+qx contrib install johnspackman/UploadMgr # install UploadMgr contrib library 
+
+# compile the application, using the compile.json default configuration values 
+qx compile
 ```
  
 ## TODO
