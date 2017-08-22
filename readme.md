@@ -162,13 +162,11 @@ Options:
                  compatible release
   -v, --verbose  verbose logging
 
-```
-
 qx upgrade [options]
 
 Options:
   -v, --verbose  verbose logging
-
+```
 
 ### How to list get your contrib repository listed with `qx contrib list`
 
@@ -206,8 +204,3 @@ Options:
 ### compile.json
 Documentation for the compile.json format is [docs/compile-json.md](docs/compile-json.md)
 
-
-## Resources:
-- https://nodejs.org/api/
-- http://yargs.js.org/docs/ (used to parse command line arguments and as code architecture)
-- https://www.npmjs.com/package/conf (configuration cache)
