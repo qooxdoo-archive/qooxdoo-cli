@@ -170,16 +170,37 @@ Options:
   -v, --verbose  verbose logging
 
 
-### How to list get your contrib library listed with `qx contrib list`
+### How to list get your contrib repository listed with `qx contrib list`
 
-- The libraries **must** have a [GitHub topic](https://help.github.com/articles/about-topics/)
+- The repository **must** have a [GitHub topic](https://help.github.com/articles/about-topics/)
   `qooxdoo-contrib` in order to be found and listed.
 - The tool will only show **[releases](https://help.github.com/articles/about-releases/)**
   not branches. The releases (tags) **should** be named in
   [semver-compatible format](http://semver.org/) (X.Y.Z). They **can** start with a "v"
   (for "version").
-- The libraries **must** have a `Manifest.json` file in the root directory of the
-  repository. Make sure to keep the "qooxdoo-version" key up to date. You **should** use a [semver range](https://github.com/npm/node-semver#ranges) string instead of the legacy array (`["4.1","5.0"]`), which however is still supporte.
+- In order to be installable, the library manifests must be placed in the repository in one of the
+  following ways:
+  
+  a) If the repository contains just **one single library**, its `Manifest.json` file **should** be placed
+     in the repository's root directory.
+  b) If you ship **several libraries** in one repository, or you want to place the `Manifest.json` file
+     outside of the root directory, you **must** provide a `qooxdoo.json` file in the root dir. This
+     file has the following syntax:
+     
+ ```
+ {
+   "contribs": [
+    { "path":"./path/to/dir-containing-manifest1" },
+    { "path":"./path/to/dir-containing-manifest2" },
+    ...
+  ]
+}
+```
+
+- Make sure to keep the "qooxdoo-version" key up to date. You **should** use a [semver range](https://github.com/npm/node-semver#ranges)   
+  string instead of the legacy array (`["4.1","5.0"]`) and adapt your validation tool chain if 
+  necessary. The old array format will be supported for at least the 6.0 version. It is internally
+  converted to a semver range.
 
 
 ### compile.json
