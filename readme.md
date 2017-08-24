@@ -13,7 +13,7 @@ https://github.com/coreybutler/nvm-windows
 
 Install `nvm` and then:
 
-```
+```bash
 nvm install 8
 nvm use 8
 ```
@@ -21,7 +21,7 @@ nvm use 8
 - **Qooxdoo** - you need a clone of the Qooxdoo repository - automatic installation is coming (and will be part of the
 6.0 release) but for now you need to make sure you clone the repo yourself:
 
-```
+```bash
 git clone https://github.com/qooxdoo/qooxdoo.git
 ```
   
@@ -35,7 +35,7 @@ git clone https://github.com/qooxdoo/qooxdoo.git
 
 ## Installation
 - Install qx-cli, create a sample application and compile it
-```
+```bash
 npm install -g qx-cli
 qx create myapp
 cd myapp
@@ -51,14 +51,14 @@ qx create myapp --qxpath /path/to/qooxdoo/repo
 
 ## Installation for Development
 - Install qx-cli 
-```
+```bash
 git clone https://github.com/qooxdoo/qx-cli
 cd qx-cli
 npm install
 ```
 
 - In order to have a globally callable executable, do the following:
-```
+```bash
 npm link
 ```
 
@@ -67,11 +67,17 @@ npm link
 
 
 ## Example command line usage
-```
-qx create foo # creates the foo application skeleton
-cd foo
-qx compile # compile the application, using the compile.json default configuration values
-qx conntrib install johnspackman/UploadMgr # install UploadMgr contrib library 
+```bash
+qx create myapp # creates the foo application skeleton
+cd myapp
+
+# (optional) install contrib libraries
+qx contrib update # updates the local cache with information on available contribs 
+qx contrib list # lists contribs compatible with myapp's qooxdoo version, determine installation candidate
+qx contrib install johnspackman/UploadMgr # install UploadMgr contrib library 
+
+# compile the application, using the compile.json default configuration values 
+qx compile
 ```
  
 ## TODO
@@ -156,31 +162,45 @@ Options:
                  compatible release
   -v, --verbose  verbose logging
 
-```
-
 qx upgrade [options]
 
 Options:
   -v, --verbose  verbose logging
+```
 
+### How to list get your contrib repository listed with `qx contrib list`
 
-### How to list get your contrib library listed with `qx contrib list`
-
-- The libraries **must** have a [GitHub topic](https://help.github.com/articles/about-topics/)
+- The repository **must** have a [GitHub topic](https://help.github.com/articles/about-topics/)
   `qooxdoo-contrib` in order to be found and listed.
 - The tool will only show **[releases](https://help.github.com/articles/about-releases/)**
   not branches. The releases (tags) **should** be named in
   [semver-compatible format](http://semver.org/) (X.Y.Z). They **can** start with a "v"
   (for "version").
-- The libraries **must** have a `Manifest.json` file in the root directory of the
-  repository. Make sure to keep the "qooxdoo-version" key up to date. You **should** use a [semver range](https://github.com/npm/node-semver#ranges) string instead of the legacy array (`["4.1","5.0"]`), which however is still supporte.
+- In order to be installable, the library manifests must be placed in the repository in one of the
+  following ways:
+  
+  a) If the repository contains just **one single library**, its `Manifest.json` file **should** be placed
+     in the repository's root directory.
+  b) If you ship **several libraries** in one repository, or you want to place the `Manifest.json` file
+     outside of the root directory, you **must** provide a `qooxdoo.json` file in the root dir. This
+     file has the following syntax:
+     
+ ```
+ {
+   "contribs": [
+    { "path":"./path/to/dir-containing-manifest1" },
+    { "path":"./path/to/dir-containing-manifest2" },
+    ...
+  ]
+}
+```
+
+- Make sure to keep the "qooxdoo-version" key up to date. You **should** use a [semver range](https://github.com/npm/node-semver#ranges)   
+  string instead of the legacy array (`["4.1","5.0"]`) and adapt your validation tool chain if 
+  necessary. The old array format will be supported for at least the 6.0 version. It is internally
+  converted to a semver range.
 
 
 ### compile.json
 Documentation for the compile.json format is [docs/compile-json.md](docs/compile-json.md)
 
-
-## Resources:
-- https://nodejs.org/api/
-- http://yargs.js.org/docs/ (used to parse command line arguments and as code architecture)
-- https://www.npmjs.com/package/conf (configuration cache)
