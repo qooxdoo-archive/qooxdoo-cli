@@ -79,6 +79,25 @@ The `targets` key is an array of objects, one for each possible target that can 
 - `uri` - (**optional**) this sets the URI used to access the target output directory, i.e. the directory which will contain `resources/` and `transpiled/`.  
 - `environment` (**optional**) additional environment settings that override any in the top level `environment` object (if there is one); these can be overridden by the Application's own `environment` block
 
+## Parts
+Parts are supported by adding a `parts` object, either at the top level, inside a target object, or inside an application object.  It looks like this:
+```
+    "parts": {
+        "boot": {
+            "include": [ "demoapp.Application", "demoapp.theme.Theme" ],
+            "exclude": []
+        },
+        "plugin-framework": {
+            "include": [ "demoapp.plugins.pdk.*" ]
+        }
+    },
+```
+Each part has an `include` array which is a list of classes (including wildcards) that are to be included; this does not add to the list of classes which are loaded by the application (see `applications[].include` for that), it is used to select the classes which are included into a part.  The `exclude` array is an optional list of class specification to exclude from the part.
+
+The `boot` part is a special name and must be provided (unless you're not specifying any parts at all).  It needs to list the classes which are required for the main application to be loaded - typically this will be your main application class and the theme.  
+
+Unlike the generator, it is permissible to overlap class definitions when using wildcards - however, a class can still only be loaded into a single part, so the compiler will prioritise more specific package names and emit a warning if there is a conflict.
+
 ## Environment Settings
 Settings can be passed into an application via `qx.core.Environment` by adding an `environment` key, for example:
 
