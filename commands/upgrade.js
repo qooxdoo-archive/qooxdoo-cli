@@ -20,24 +20,6 @@
  * Script to initialise a new qooxdoo application, or upgrade an old (pre-6.0) application
  */
 
-const qx = require("../lib/qxcli.js");
+require("../lib/qxcli.js");
 
-exports.command = "upgrade [options]";
-exports.desc = "upgrades a qooxdoo application";
-exports.usage = "upgrade";
-exports.builder = function (yargs) {
-  return yargs
-    .option('v', {
-        alias: 'verbose',
-        describe: 'verbose logging'
-    })
-    .showHelpOnFail()
-}
-exports.handler = function (argv) {
-  try {
-    return new qxcli.commands.Upgrade(argv).process();
-  } catch (e) {
-    console.error(e);
-  }
-
-}
+qxcli.commands.Upgrade.yargsInstall(exports);
