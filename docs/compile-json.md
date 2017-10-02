@@ -48,6 +48,8 @@ The `applications` key is an array of objects, and each object can contain:
 - `theme` - this is the theme class for your application
 - `name` - this is an arbitrary, but unique, short name for your application and should be filename and URL friendly - IE no spaces or special characters
 - `environment` - (**optional**) this is a set of application-specific environment settings that override all other settings when compiling this application (see below)
+- `outputPath` - (**optional**) the directory to place the application files (e.g. boot.js and resource.js), relative to the target output directory
+- `uri` - (**optional**) this sets the URI used to access the application directory, i.e. the directory containing boot.js and resource.js; the default is to assume that it is "."
 - `include` - (**optional**) this is an array of class names which are to be included in the compilation, regardless of whether the compiler can detect if they are needed (for example, your application dynamically choose class names on the fly).  Wildcards are supported by adding a `*`, for example `"include": [ "qx.util.format.*" ]`
 - `exclude` - (**optional**) this is an array of class names which are to be excluded from the application, regardless of whether the compiler thinks that they are needed.  Wildcards are supported by adding a `*`, for example `"exclude": [ "qx.util.format.NumberFormat" ]`.  Note that `exclude` takes priority over `include`
 - `compiler` - (**optional**, **advanced**) this is the class name in `qooxdoo-compiler` to use when compiling the application
@@ -74,7 +76,27 @@ A complete example is:
 The `targets` key is an array of objects, one for each possible target that can be compiled.  Each object can contain:
 - `type` - this is either "source", "build", "hybrid" or a class name in `qooxdoo-compiler`; using a class name is advanced usage, but ultimately the standard names just shortcuts to class names anyway ("source" is `qxcompiler.targets.SourceTarget`, etc)
 - `outputPath` the folder where the compilation outputs to, and will be created if it does not already exist
+- `uri` - (**optional**) this sets the URI used to access the target output directory, i.e. the directory which will contain `resources/` and `transpiled/`.  
 - `environment` (**optional**) additional environment settings that override any in the top level `environment` object (if there is one); these can be overridden by the Application's own `environment` block
+
+## Parts
+Parts are supported by adding a `parts` object, either at the top level, inside a target object, or inside an application object.  It looks like this:
+```
+    "parts": {
+        "boot": {
+            "include": [ "demoapp.Application", "demoapp.theme.Theme" ],
+            "exclude": []
+        },
+        "plugin-framework": {
+            "include": [ "demoapp.plugins.pdk.*" ]
+        }
+    },
+```
+Each part has an `include` array which is a list of classes (including wildcards) that are to be included; this does not add to the list of classes which are loaded by the application (see `applications[].include` for that), it is used to select the classes which are included into a part.  The `exclude` array is an optional list of class specification to exclude from the part.
+
+The `boot` part is a special name and must be provided (unless you're not specifying any parts at all).  It needs to list the classes which are required for the main application to be loaded - typically this will be your main application class and the theme.  
+
+Unlike the generator, it is permissible to overlap class definitions when using wildcards - however, a class can still only be loaded into a single part, so the compiler will prioritise more specific package names and emit a warning if there is a conflict.
 
 ## Environment Settings
 Settings can be passed into an application via `qx.core.Environment` by adding an `environment` key, for example:
@@ -149,7 +171,21 @@ By default, only translation strings which are used by the classes are included 
 
 
 ## TypeScript
-Coming soon
+TypeScript can be output by adding a new target to your compile.json, for example:
+```
+    /** Targets */
+    "targets": [
+        {
+            "type": "typescript",
+            "outputPath": "source-output",
+            "include": [ "*" ],
+            "exclude": [ "qx.test.*" ]
+        }
+        /* ... snip ... */
+    ]
+```
+The target will do a full "Source" compile, and you would use the `include` and `exclude` to indicate the classes you're interested in.  The TypeScript definition is output into `./source-output/qooxdoo.d.ts`
+
 
 
 
