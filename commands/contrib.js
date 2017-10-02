@@ -14,7 +14,11 @@ exports.builder = function (yargs) {
     .option('t', {
         alias: 'token',
         describe: 'adds a GitHub personal access token to calls to GitHub'
-    })     
+    })
+    .option('f', {
+        alias: 'file',
+        describe: 'output result to a file'
+    })       
     .option('v', {
         alias: 'verbose',
         describe: 'verbose logging'
