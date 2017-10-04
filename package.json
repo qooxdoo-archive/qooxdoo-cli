@@ -28,6 +28,7 @@
     "flat-cache": "^1.2.2",
     "github-api": "^3.0.0",
     "json-to-ast": "https://github.com/johnspackman/json-to-ast.git#editable-json",
+    "node-fetch": "^1.7.3",
     "qooxdoo": "^5.0.1",
     "qxcompiler": "^0.1.18",
     "rimraf": "^2.6.1",

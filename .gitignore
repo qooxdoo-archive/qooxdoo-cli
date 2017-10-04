@@ -7,3 +7,5 @@ node_modules
 .vscode
 qooxdoo
 test
+foo
+.contrib-cache.json
