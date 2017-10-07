@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
+require("./lib/qxcli");
+
 // main config
 var title = "qooxdoo command line interface";
-title = "\n" + title + "\n" + "=".repeat(title.length) + "\n\n";
+title = "\n" + title + "\n" + "=".repeat(title.length) + "\n";
+title += `Versions: qooxdoo-cli v${qxcli.Version.VERSION}, qooxdoo-compiler v${qxcompiler.Version.VERSION}\n\n`;
 title +=
 `Typical usage:
   qx <commands> [options]
