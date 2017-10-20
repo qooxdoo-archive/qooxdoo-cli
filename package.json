@@ -1,6 +1,6 @@
 {
   "name": "qx-cli",
-  "version": "0.1.26",
+  "version": "0.1.27",
   "description": "The command line interface for qooxdoo developers",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "json-to-ast": "https://github.com/johnspackman/json-to-ast.git#editable-json",
     "node-fetch": "^1.7.3",
     "qooxdoo": "^5.0.1",
-    "qxcompiler": "^0.1.22",
+    "qxcompiler": "^0.1.23",
     "rimraf": "^2.6.1",
     "semver": "^5.3.0",
     "yargs": "^8.0.1"
