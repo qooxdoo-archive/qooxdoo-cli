@@ -1,6 +1,29 @@
 #!/usr/bin/env node
 
+const path = require("path");
 require("./lib/qxcli");
+
+// sanatise process list parameter
+let args = [path.relative(process.cwd(), process.argv[1])]
+
+for (let i=2; i<process.argv.length; i++) {
+  let arg = process.argv[i]
+  if (arg === '--token' || arg === '-t') {
+    args.push.apply(args, [arg, '*****'])
+    i++
+  }
+  else if (arg.startsWith('--token=')) {
+    args.push('--token=*****')
+  }
+  else if (arg.startsWith('-t')) {
+    args.push('-t*****')
+  }
+  else {
+    args.push(arg)
+  }
+}
+
+process.title = args.join(" ")
 
 // main config
 var title = "qooxdoo command line interface";
