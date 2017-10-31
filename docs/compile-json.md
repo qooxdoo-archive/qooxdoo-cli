@@ -80,6 +80,9 @@ The `targets` key is an array of objects, one for each possible target that can 
 - `outputPath` the folder where the compilation outputs to, and will be created if it does not already exist
 - `uri` - (**optional**) this sets the URI used to access the target output directory, i.e. the directory which will contain `resources/` and `transpiled/`.  
 - `environment` (**optional**) additional environment settings that override any in the top level `environment` object (if there is one); these can be overridden by the Application's own `environment` block
+- `writeCompileInfo` (**optional**) if true, the target will write a `compile-info.json` and `resources.json` into the application's output directory, containing the data structures required to generate an application
+- `uri` (**optional**) the URI used to load resources for this target; by default, this is assumed to be relative to the application's index.html
+- `typescript` - see below
 
 ## Parts
 Parts are supported by adding a `parts` object, either at the top level, inside a target object, or inside an application object.  It looks like this:
@@ -173,20 +176,20 @@ By default, only translation strings which are used by the classes are included 
 
 
 ## TypeScript
-TypeScript can be output by adding a new target to your compile.json, for example:
+** Note that this has changed: you no longer add a new target **
+TypeScript can be output by either using the `--typescript` option to `qx compile`, or by modifying your target(s) to add `typescript: true`; if you use a string instead of `true`, the string is the name of the file which is generated inside the target output directory, for example:
 ```
     /** Targets */
     "targets": [
         {
-            "type": "typescript",
+            "type": "source",
             "outputPath": "source-output",
-            "include": [ "*" ],
-            "exclude": [ "qx.test.*" ]
+            typescript: true
         }
         /* ... snip ... */
     ]
 ```
-The target will do a full "Source" compile, and you would use the `include` and `exclude` to indicate the classes you're interested in.  The TypeScript definition is output into `./source-output/qooxdoo.d.ts`
+The TypeScript definition is output into `./source-output/qooxdoo.d.ts`
 
 
 
