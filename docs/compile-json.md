@@ -47,6 +47,7 @@ The `applications` key is an array of objects, and each object can contain:
 - `class` - this is the class name of your main application (it typically inherits from `qx.application.Standalone` for web applications)
 - `theme` - this is the theme class for your application
 - `name` - this is an arbitrary, but unique, short name for your application and should be filename and URL friendly - IE no spaces or special characters
+- `title` - (**optional**) this is the human readable, customer facing description used to set the `<title>` tag of the application web page, i.e. in the application's index.html 
 - `environment` - (**optional**) this is a set of application-specific environment settings that override all other settings when compiling this application (see below)
 - `outputPath` - (**optional**) the directory to place the application files (e.g. boot.js and resource.js), relative to the target output directory
 - `uri` - (**optional**) this sets the URI used to access the application directory, i.e. the directory containing boot.js and resource.js; the default is to assume that it is "."
