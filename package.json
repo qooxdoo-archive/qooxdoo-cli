@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/qooxdoo/qx-cli#readme",
   "dependencies": {
+    "app-module-path": "^2.2.0",
     "async": "^2.4.1",
     "chokidar": "^1.7.0",
     "download": "^6.0.0",
