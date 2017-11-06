@@ -194,6 +194,28 @@ TypeScript can be output by either using the `--typescript` option to `qx compil
 ```
 The TypeScript definition is output into `./source-output/qooxdoo.d.ts`
 
+## compile.js
+Configuration files do not support processes, job executions, or even macros - if you want to add basic processing (eg for macros), use a .js file to manipulate the data. 
+.js MUST return a function. This function MUST accept two arguments, one for the data (which will be null if there is no .json) and the second is the callback to call when complete; the callback takes an error object and the output configuration data.
+
+If you provide a .js file and there is also a .json, then it is loaded and parsed first. The function in the .js is called with the parsed data from the .json file as a parameter.
+
+Example:
+
+```
+function compile(data, callback) {
+	console.log('I'm here');	
+    let err = null;
+	callback(err, data);
+}
+```
+
+If err is not null loading of the config file is rejected.
+
+
+
+     
+
 
 
 
