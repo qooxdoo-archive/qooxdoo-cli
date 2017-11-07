@@ -200,7 +200,7 @@ Configuration files do not support processes, job executions, or even macros - i
 
 If you provide a .js file and there is also a .json, then it is loaded and parsed first. The function in the .js is called with the parsed data from the .json file as a parameter.
 
-### simple example:
+Example:
 
 ```
 function compile(data, callback) {
@@ -255,6 +255,7 @@ async function compile(data, callback) {
   callback(null, data);
 }
 ```
+
 
 
 
