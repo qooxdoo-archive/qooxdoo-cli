@@ -212,6 +212,51 @@ function compile(data, callback) {
 
 If err is not null loading of the config file is rejected.
 
+### How to add sass call for mobile projects:
+
+```
+async function compile(data, callback) {
+/**
+ * Adds sass support for current project.
+ * Needed for qx.mobile projects.
+ * 
+ * PreReqs:
+ *    - add dependency to project package.json: "runscript": "^1.3.0"
+ *    - run npm install in project dir.
+ *    - change test in sass call with your project name
+ *  
+ * @param {*} data       : config data from compile.json
+ * @param {*} callback   : callback for qxcli.  
+ */
+  debugger;
+  const runscript = require('runscript');
+  runScript = async function (cmd) {
+    return new Promise((resolve) => runscript(cmd, {
+        stdio: 'pipe'
+      })
+      .then(stdio => {
+        console.log('Run "%s"', cmd);
+        if (stdio.stdout)
+          console.log(err.stdio.stdout.toString());
+        if (stdio.stderr)
+          console.log(err.stdio.stderr.toString());
+        resolve();
+      })
+      .catch(err => {
+        console.error(err.toString());
+        if (err.stdio.stdout)
+          console.error(err.stdio.stdout.toString());
+        if (err.stdio.stderr)
+          console.error(err.stdio.stderr.toString());
+        resolve();
+      }));
+  }
+  await runScript('sass -C -t compressed -I ../qooxdoo/framework/source/resource/qx/mobile/scss -I ../qooxdoo/framework/source/resource/qx/scss --update source/theme/test/scss:source/resource/test/css');
+  callback(null, data);
+}
+```
+
+
 
 
      
