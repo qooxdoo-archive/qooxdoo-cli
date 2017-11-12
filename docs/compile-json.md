@@ -254,10 +254,10 @@ async function compile(data, callback) {
   let cmd = 'sass -C -t compressed -I %1/source/resource/qx/mobile/scss -I %1/source/resource/qx/scss --%3 source/theme/%2/scss:source/resource/%2/css';
   cmd = qx.lang.String.format(cmd, [data.libraries[0], data.applications[0].name]);
   if (!this.argv.watch) {
-     cmd = qx.lang.String.format(cmd, ["", "", "--update"]);
+     cmd = qx.lang.String.format(cmd, ["", "", "update"]);
      await runScript(cmd);
   } else {
-    cmd = qx.lang.String.format(cmd, ["", "", "--wait"]);
+    cmd = qx.lang.String.format(cmd, ["", "", "watch"]);
     runScript(cmd);
   }       
   callback(null, data);
