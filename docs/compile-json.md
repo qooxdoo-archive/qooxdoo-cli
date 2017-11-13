@@ -85,7 +85,8 @@ The `targets` key is an array of objects, one for each possible target that can 
 - `writeCompileInfo` (**optional**) if true, the target will write a `compile-info.json` and `resources.json` into the application's output directory, containing the data structures required to generate an application
 - `uri` (**optional**) the URI used to load resources for this target; by default, this is assumed to be relative to the application's index.html
 - `typescript` - see below
-`minification` - (**optional**) determines the minification to be used for applications, if the target supports it; can be overridden on a per application basis.  Can be `none`, `minify`, or `mangle`
+- `minification` - (**optional**) determines the minification to be used for applications, if the target supports it; can be overridden on a per application basis.  Can be `none`, `minify`, or `mangle`
+- `addCreatedAt` - (**optional**) if true, this will cause every object to have a hidden property called `$$createdAt` which points to an object containing `filename`, `lineNumber`, and `column` properties
 
 ## Parts
 Parts are supported by adding a `parts` object, either at the top level, inside a target object, or inside an application object.  It looks like this:
