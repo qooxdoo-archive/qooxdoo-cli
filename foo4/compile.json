@@ -14,18 +14,18 @@
     }
   ],
   "defaultTarget": "source",
-  "locales": [ "en" ],
+  "locales": ["en"],
 
   "applications": [
     {
-      "class": "$namespace.Application",
-      "theme": "$namespace.theme.Theme",
-      "name": "$namespace"
+      "class": "foo4.Application",
+      "theme": "foo4.theme.Theme",
+      "name": "foo4"
     }
   ],
 
   "libraries": [
-    "$qxpath/framework",
+    "/Users/cboulanger/Code/qooxdoo-cli/qooxdoo/framework",
     "."
   ]
 }
