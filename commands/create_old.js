@@ -4,7 +4,7 @@
 Example: For creating a qooxdoo application 'myapp' you could execute:
   qx create <type> myapp
 
-
+DEPRECATED. WILL BE REMOVED SHORTY!
                         
 not implemented:                         
   -l LOGFILE, --logfile=LOGFILE
@@ -19,15 +19,13 @@ not implemented:
                         ${TMPDIR}/qx${QOOXDOO_VERSION}/cache)
 */
 
-/*
-*/
 const spawn = require('child_process').spawn;
 const fs = require("fs");
 const path = require("path");
 const process = require("process");
 const rimraf = require('rimraf');
 
-exports.command = "create <application name> [options]";
+exports.command = "create_old <application name> [options]";
 exports.desc = "creates a qooxdoo application skeleton";
 exports.usage = "Creates a qooxdoo application skeleton.";
 exports.builder = function (yargs) {
