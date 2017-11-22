@@ -5,7 +5,7 @@ module.exports = function(argv,data){
   return {
     "qxpath" : {
       "description" : "the absolute path to the qooxdoo folder",
-      "value" : data.qooxdoo_path,
+      //"value" : data.qooxdoo_path || undefined, // doesn't work
       "default" : path.normalize(argv.qxpath)
     },  
     "namespace" : {

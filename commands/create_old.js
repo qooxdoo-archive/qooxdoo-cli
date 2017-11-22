@@ -4,7 +4,7 @@
 Example: For creating a qooxdoo application 'myapp' you could execute:
   qx create <type> myapp
 
-DEPRECATED. WILL BE REMOVED SHORTY!
+DEPRECATED. WILL BE REMOVED SHORTLY!
                         
 not implemented:                         
   -l LOGFILE, --logfile=LOGFILE
@@ -26,7 +26,7 @@ const process = require("process");
 const rimraf = require('rimraf');
 
 exports.command = "create_old <application name> [options]";
-exports.desc = "creates a qooxdoo application skeleton";
+exports.desc = "creates a qooxdoo application skeleton using the generator (deprecated, will be removed)";
 exports.usage = "Creates a qooxdoo application skeleton.";
 exports.builder = function (yargs) {
   return yargs

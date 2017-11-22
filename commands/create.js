@@ -18,5 +18,5 @@
 
 /*global qxcli*/
 
-require("../lib/qxcli/commands/contrib/Create");
-module.exports = qxcli.commands.contrib.Create.getYargsCommand();
+require("../lib/qxcli/commands/Create");
+module.exports = qxcli.commands.Create.getYargsCommand();
