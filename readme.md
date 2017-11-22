@@ -68,7 +68,7 @@ npm link
 
 ## Example command line usage
 ```bash
-qx create myapp # creates the foo application skeleton
+qx create myapp -I # creates the foo application skeleton non-interactively
 cd myapp
 
 # (optional) install contrib libraries
