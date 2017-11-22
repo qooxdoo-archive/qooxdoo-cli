@@ -15,8 +15,7 @@
      * Christian Boulanger (info@bibliograph.org, @cboulanger)
 
 ************************************************************************ */
-
 /*global qxcli*/
 
-require("../lib/qxcli/commands/Create");
-module.exports = qxcli.commands.Create.getYargsCommand();
+require("../../lib/qxcli/commands/contrib/Publish");
+module.exports = qxcli.commands.contrib.Publish.getYargsCommand();

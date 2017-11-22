@@ -32,7 +32,6 @@ git clone https://github.com/qooxdoo/qooxdoo.git
      
 (Note that there is no longer a dependency on ImageMagick)
 
-
 ## Installation
 - Install qx-cli, create a sample application and compile it
 ```bash
@@ -68,7 +67,7 @@ npm link
 
 ## Example command line usage
 ```bash
-qx create myapp # creates the foo application skeleton
+qx create myapp -I # creates the foo application skeleton non-interactively
 cd myapp
 
 # (optional) install contrib libraries
@@ -170,6 +169,31 @@ qx upgrade [options]
 Options:
   -v, --verbose  verbose logging
 ```
+### Create a new project
+
+You can create new project skeletons by using the `qx create command`. It has the following options:
+```
+  -t, --type            Type of the application to create
+          [string] [choices: "desktop", "contrib", "mobile", "native", "server",
+                                                 "website"] [default: "desktop"]
+  -o, --out             Output directory for the application content.
+  -s, --namespace       Top-level namespace.
+  -n, --name            Name of application/library (defaults to namespace).
+  -q, --qxpath          Path to the folder containing the qooxdoo framework.
+        [default: "./qooxdoo/framework"]
+  --theme               The name of the theme to be used.    [default: "indigo"]
+  --icontheme           The name of the icon theme to be used.
+                                                             [default: "Oxygen"]
+  -I, --noninteractive  Do not prompt for missing values
+  -V, --verbose         Verbose logging
+```
+
+Currently, only the "desktop" and "contrib" skeleton types are implemented. The fastest way to
+create a new project is to execute `qx create foo -I`. This will create a new application
+with the namespace "foo", using default values. However, in most cases you wamt to customize the
+generated application skeleton. `qx create foo` will interactively ask you all information it
+needs, providing default values where possible. It is recommended to pass the absolute path to 
+the qooxdoo framework folder via the `--qxpath` flag in each case.
 
 ### How to list get your contrib repository listed with `qx contrib list`
 
@@ -199,7 +223,7 @@ Options:
 ```
 - Make sure to keep the "qooxdoo-version" key up to date (see below)
 
-## Contribution compatibility management
+### Contribution compatibility management
 
 The contrib system uses [semver](http://semver.org) and [semver ranges](https://github.com/npm/node-semver#ranges) 
 to manage dependencies and compatibilites. The main dependeny is between the qooxdoo framework used by the application 
@@ -222,6 +246,27 @@ technically, they are compatible. In order to install these contributions, you n
 qx contrib list --all # this will list all available contribs, regardless of compatibility
 qx contrib install <repo name> --release <release tag>
 ```
+
+### Publishing contribs
+
+The CLI makes it really easy to publish releases of your contrib library. Say you have a local clone
+of the GitHub repository of your contrib library. After committing all changes to your code and pushing
+them to the master branch of your repo, you can execute `qx contrib publish`. The command has the 
+following options:
+```
+  -T, --token           Use a GitHub access token
+  -t, --type            Set the release type
+           [string] [choices: "major", "premajor", "minor", "preminor", "patch",
+                                    "prepatch", "prerelease"] [default: "patch"]
+  -I, --noninteractive  Do not prompt user
+```
+You need to supply a valid GitHub token or export the token as an environment variable:
+```
+export GITHUB_ACCESS_TOKEN=<your token> 
+```
+The command takes care of incrementing the version of your application. By default, the patch version
+number is increased, but you can choose among the release types stated above. The command will then 
+commit the version bump and push it to the master branch before releasing the new version.
 
 
 ### compile.json
