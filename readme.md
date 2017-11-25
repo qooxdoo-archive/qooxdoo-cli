@@ -32,7 +32,6 @@ git clone https://github.com/qooxdoo/qooxdoo.git
      
 (Note that there is no longer a dependency on ImageMagick)
 
-
 ## Installation
 - Install qx-cli, create a sample application and compile it
 ```bash
@@ -68,7 +67,7 @@ npm link
 
 ## Example command line usage
 ```bash
-qx create myapp # creates the foo application skeleton
+qx create myapp -I # creates the foo application skeleton non-interactively
 cd myapp
 
 # (optional) install contrib libraries
@@ -79,11 +78,17 @@ qx contrib install johnspackman/UploadMgr # install UploadMgr contrib library
 # compile the application, using the compile.json default configuration values 
 qx compile
 ```
- 
+
+See [here](dpcs/contrib.md) if you don't get any contribs listed or if the ones you are looking for 
+are missing.
+
 ## TODO
 - [x] make it work, i.e., compile :-) 
 - [ ] create an npm installable package
 - [x] install qx as global executable
+----
+- [ ] qx contrib install without arguemnts installs all contribs listed in `contrib.json`
+- [ ] Allow use of relative paths to the qooxdoo library for `qx create`
 
 ## Documemtation
 
@@ -123,84 +128,54 @@ Options:
   --verbose                 enables additional progress output to console
                                                                        [boolean]
 
-qx create <application name> [options]
+qx create <application namespace> [options]
 
 Options:
-  -t, --type       Type of the application to create, one of: ['desktop',
-                   'inline', 'mobile', 'native', 'server', 'website'].'desktop'
-                   -- is a standard qooxdoo GUI application; 'inline' -- is an
-                   inline qooxdoo GUI application; 'mobile' -- is a qooxdoo
-                   mobile application with full OO support and mobile GUI
-                   classes; 'native' -- is a qooxdoo application with full OO
-                   support but no GUI classes; 'server' -- for non-browser run
-                   times like Rhino, node.js; 'website' -- can be used to build
-                   low-level qooxdoo applications. (Default: desktop)
-                                                            [default: "desktop"]
-  -o, --out        Output directory for the application folder    [default: "."]
-  -s, --namespace  Applications's top-level namespace.
-  -q, --qxpath     Path to the folder containing the qooxdoo framework.
-                                                          [default: "./qooxdoo"]
-  -v, --verbose    verbose logging
-  
-qx contrib <command> [options]
-
-Commands:
-  install  installs the latest compatible release of a contrib library (as per
-           Manifest.json). Use "-r <release tag>" to install this particular
-           release.
-  list     if no repository name is given, lists all available contribs that are
-           compatible with the project's qooxdoo version ("--all" lists
-           incompatible ones as well). Otherwise, list all releases of this
-           contrib library.
-  remove   removes a contrib library from the configuration.
-  update   updates information on contrib libraries from github. Has to be called
-           before the other commands. 
-
-Options:
-  -a, --all      disable filters (for example, also show incompatible versions)
-  -r, --release  use a specific release tag instead of the tag of the latest
-                 compatible release
-  -v, --verbose  verbose logging
-
-qx upgrade [options]
-
-Options:
-  -v, --verbose  verbose logging
+  -t, --type            Type of the application to create
+          [string] [choices: "desktop", "contrib", "mobile", "native", "server",
+                                                 "website"] [default: "desktop"]
+  -o, --out             Output directory for the application content.
+  -s, --namespace       Top-level namespace.
+  -n, --name            Name of application/library (defaults to namespace).
+  -q, --qxpath          Path to the folder containing the qooxdoo framework.
+                                                [default: "./qooxdoo/framework"]
+  --theme               The name of the theme to be used.    [default: "indigo"]
+  --icontheme           The name of the icon theme to be used.
+                                                             [default: "Oxygen"]
+  -I, --noninteractive  Do not prompt for missing values
+  -V, --verbose         Verbose logging
 ```
 
-### How to list get your contrib repository listed with `qx contrib list`
+## Create a new project
 
-- The repository **must** have a [GitHub topic](https://help.github.com/articles/about-topics/)
-  `qooxdoo-contrib` in order to be found and listed.
-- The tool will only show **[releases](https://help.github.com/articles/about-releases/)**
-  not branches. The releases (tags) **should** be named in
-  [semver-compatible format](http://semver.org/) (X.Y.Z). They **can** start with a "v"
-  (for "version").
-- In order to be installable, the library manifests must be placed in the repository in one of the
-  following ways:
-  
-  a) If the repository contains just **one single library**, its `Manifest.json` file **should** be placed
-     in the repository's root directory.
-  b) If you ship **several libraries** in one repository, or you want to place the `Manifest.json` file
-     outside of the root directory, you **must** provide a `qooxdoo.json` file in the root dir. This
-     file has the following syntax:
-     
- ```
- {
-   "contribs": [
-    { "path":"./path/to/dir-containing-manifest1" },
-    { "path":"./path/to/dir-containing-manifest2" },
-    ...
-  ]
-}
+You can create new project skeletons by using the `qx create` command` It has the following options:
+```
+  -t, --type            Type of the application to create
+          [string] [choices: "desktop", "contrib", "mobile", "native", "server",
+                                                 "website"] [default: "desktop"]
+  -o, --out             Output directory for the application content.
+  -s, --namespace       Top-level namespace.
+  -n, --name            Name of application/library (defaults to namespace).
+  -q, --qxpath          Path to the folder containing the qooxdoo framework.
+        [default: "./qooxdoo/framework"]
+  --theme               The name of the theme to be used.    [default: "indigo"]
+  --icontheme           The name of the icon theme to be used.
+                                                             [default: "Oxygen"]
+  -I, --noninteractive  Do not prompt for missing values
+  -V, --verbose         Verbose logging
 ```
 
-- Make sure to keep the "qooxdoo-version" key up to date. You **should** use a [semver range](https://github.com/npm/node-semver#ranges)   
-  string instead of the legacy array (`["4.1","5.0"]`) and adapt your validation tool chain if 
-  necessary. The old array format will be supported for at least the 6.0 version. It is internally
-  converted to a semver range.
+Currently, only the "desktop" and "contrib" skeleton types are implemented. 
 
+The fastest way to create a new project is to execute `qx create foo -I`. This will create a new application with the namespace "foo", using default values. However, in most cases you wamt to customize the generated application skeleton. `qx create foo` will interactively ask you all information it needs, providing default values where possible. If you are in the top-level folder of the application and want to put the application content into it without creating a subfolder (for example, in a top-level folder of a cloned empty GitHub project), use `--out=.`. 
+
+It is currently necessary to pass the absolute path to 
+the qooxdoo framework folder via the `--qxpath` flag in each case. This is a bug that will be fixed shortly. 
+
+### qooxdoo-contrib system
+
+For more on qooxdoo's "plugin architecture" and the `qx contrib` commands, see [here](docs/contrib.md).
 
 ### compile.json
-Documentation for the compile.json format is [docs/compile-json.md](docs/compile-json.md)
+Documentation for the compile.json format is [docs/compile-json.md](docs/compile-json.md).
 
