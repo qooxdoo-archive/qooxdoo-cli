@@ -1,8 +1,29 @@
+/**
+ * This module exports dynamic data on the variables used by the templates. 
+ * It returns a map. The keys are the names of the variables that are asked
+ * from the user. Each key takes a map with the following keys:
+ * - description (string) : the part of the question that follows "Please enter "
+ * - value (mixed) : If a value is set, it is assumed to be final and not asked from the user. If
+ *   it is 'undefined', it is asked from the user and stored here.
+ * - default (mixed): the value's default
+ * - optional (boolean) : whether the user needs to enter anything at all
+ * - type (string) : the inquirer question 'type'
+ * - choices (array||function): the inquirer "list" question's 'choices' data 
+ * - validate (function) : a function that returns true if the argument passed to the function
+ *   is a valid value
+ */
+
 const process = require("process");
 const path = require("path");
 const fs = require("fs");
 
-module.exports = function(argv,data){
+/**
+ * @param argv {Object} The calling command class' yargs argv object
+ * @param data {Object} Additional data
+ * @param that {Object} The calling command class' "this" object, in order to be able access its methods.
+ * This doesn't seem right and should be solved differently. 
+ */
+module.exports = function(argv, data, that){
   return {
     "type" : {
       "type": "list",
@@ -13,12 +34,13 @@ module.exports = function(argv,data){
          return dirs();        
       },
       "description" : "type of the application:",
+      "value" : argv.type,
       "default" : "desktop",
       "validate" : function(answer) {
         // check if skeleton exists
         let skeleton_dir = path.join( data.template_dir, "skeleton", answer );
         if ( ! fs.existsSync( skeleton_dir ) ) {
-          this.exit(`\nApplication type <${answer}> does not exist or has not been implemented yet.`);
+          throw new Error(`Application type <${answer}> does not exist or has not been implemented yet.`);
         }
         data.skeleton_dir = skeleton_dir;
         return true;
@@ -31,12 +53,12 @@ module.exports = function(argv,data){
       "validate" : function(answer) {
         // check if qooxdoo exists
         if ( ! fs.existsSync( answer ) ) {
-          this.exit(`\no valid qooxdoo path: <${answer}>.`);
+          throw new Error(`No valid qooxdoo path: <${answer}>.`);
         }
         try {
-          data.qooxdoo_version = this.getQooxdooVersion(answer);  
+          data.qooxdoo_version = that.getQooxdooVersion(answer);
         } catch(e){
-          this.exit(e.message);
+          throw new Error(e.message);
         }
         return true;
       }
