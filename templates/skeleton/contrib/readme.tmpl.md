@@ -1,5 +1,5 @@
-# $name
+# ${name}
 
-$summary
+${summary}
 
-$description
+${description}

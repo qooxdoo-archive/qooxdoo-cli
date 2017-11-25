@@ -1,23 +1,23 @@
 {
   "info" : 
   {
-    "name" : "$name",
+    "name" : "${name}",
 
-    "summary" : "$summary",
-    "description" : "$description",
+    "summary" : "${summary}",
+    "description" : "${description}",
     
-    "homepage" : "$homepage",
+    "homepage" : "${homepage}",
 
-    "license" : "$license",
-    "authors" : $author_map,
+    "license" : "${license}",
+    "authors" : ${author_map},
 
-    "version" : "$version",
-    "qooxdoo-range": "$qooxdoo_range"
+    "version" : "${version}",
+    "qooxdoo-range": "${qooxdoo_range}"
   },
   
   "provides" : 
   {
-    "namespace"   : "$namespace",
+    "namespace"   : "${namespace}",
     "encoding"    : "utf-8",
     "class"       : "source/class",
     "resource"    : "source/resource",

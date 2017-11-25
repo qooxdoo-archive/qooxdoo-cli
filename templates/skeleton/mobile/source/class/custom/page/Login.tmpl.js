@@ -11,7 +11,7 @@
 /**
  * TODO: needs documentation
  */
-qx.Class.define("$namespace.page.Login",
+qx.Class.define("${namespace}.page.Login",
 {
   extend : qx.ui.mobile.page.NavigationPage,
 

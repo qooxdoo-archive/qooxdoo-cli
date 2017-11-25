@@ -1,19 +1,19 @@
 /* ************************************************************************
 
-   Copyright: $year $copyright_holder
+   Copyright: ${year} ${copyright_holder}
 
-   License: $license
+   License: ${license}
 
-   Authors: $authors
+   Authors: ${authors}
 
 ************************************************************************ */
 
 /**
  * This is the main application class of your custom application "${Name}"
  *
- * @asset($namespace/*)
+ * @asset(${namespace}/*)
  */
-qx.Class.define("$namespace.Application",
+qx.Class.define("${namespace}.Application",
 {
   extend : qx.application.Mobile,
 
@@ -47,8 +47,8 @@ qx.Class.define("$namespace.Application",
       -------------------------------------------------------------------------
       */
 
-      var login = new $namespace.page.Login();
-      var overview = new $namespace.page.Overview();
+      var login = new ${namespace}.page.Login();
+      var overview = new ${namespace}.page.Overview();
 
       // Add the pages to the page manager.
       var manager = new qx.ui.mobile.page.Manager(false);
