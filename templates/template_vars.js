@@ -1,12 +1,45 @@
 const process = require("process");
 const path = require("path");
+const fs = require("fs");
 
 module.exports = function(argv,data){
   return {
+    "type" : {
+      "type": "list",
+      "choices": function() {
+         // check if skeleton exists
+         let skeleton_dir = path.join( data.template_dir, "skeleton");
+         const dirs = p => fs.readdirSync(skeleton_dir).filter(f => fs.statSync(path.join(skeleton_dir, f)).isDirectory());
+         return dirs();        
+      },
+      "description" : "type of the application:",
+      "default" : "desktop",
+      "validate" : function(answer) {
+        // check if skeleton exists
+        let skeleton_dir = path.join( data.template_dir, "skeleton", answer );
+        if ( ! fs.existsSync( skeleton_dir ) ) {
+          this.exit(`\nApplication type <${answer}> does not exist or has not been implemented yet.`);
+        }
+        data.skeleton_dir = skeleton_dir;
+        return true;
+      }
+    },  
     "qxpath" : {
       "description" : "the absolute path to the qooxdoo folder",
-      //"value" : data.qooxdoo_path || undefined, // doesn't work
-      "default" : path.normalize(argv.qxpath)
+//      "value" : data.qooxdoo_path || undefined, // doesn't work
+      "default" : data.qooxdoo_path,
+      "validate" : function(answer) {
+        // check if qooxdoo exists
+        if ( ! fs.existsSync( answer ) ) {
+          this.exit(`\no valid qooxdoo path: <${answer}>.`);
+        }
+        try {
+          data.qooxdoo_version = this.getQooxdooVersion(answer);  
+        } catch(e){
+          this.exit(e.message);
+        }
+        return true;
+      }
     },  
     "namespace" : {
       "description" : "the namespace of the application",
@@ -62,7 +95,9 @@ module.exports = function(argv,data){
     },
     "qooxdoo_range" : {
       "description" : "the semver range of qooxdoo versions that are compatible with this application",
-      "default" : data.qooxdoo_version 
+      "default" : function() {
+        return data.qooxdoo_version;
+      }  
     },
     "theme": {
       "description" : "the theme of the application",
