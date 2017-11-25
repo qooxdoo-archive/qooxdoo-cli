@@ -1,10 +1,10 @@
 /* ************************************************************************
 
-   Copyright:
+   Copyright: $year $copyright_holder
 
-   License:
+   License: $license
 
-   Authors:
+   Authors: $authors
 
 ************************************************************************ */
 
