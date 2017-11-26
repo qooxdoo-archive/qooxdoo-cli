@@ -14,18 +14,18 @@
     }
   ],
   "defaultTarget": "source",
-  "locales": $locales,
+  "locales": ${locales},
 
   "applications": [
     {
-      "class": "$namespace.demo.Application",
-      "theme": "$namespace.demo.theme.Theme",
-      "name": "$namespace"
+      "class": "${namespace}.demo.Application",
+      "theme": "${namespace}.demo.theme.Theme",
+      "name": "${namespace}"
     }
   ],
 
   "libraries": [
-    "../../$qxpath",
+    "${qxpath}",
     ".",
     "../.."
   ]

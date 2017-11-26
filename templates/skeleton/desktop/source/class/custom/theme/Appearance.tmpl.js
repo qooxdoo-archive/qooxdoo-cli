@@ -1,16 +1,16 @@
 /* ************************************************************************
 
-   Copyright: $year $copyright_holder
+   Copyright: ${year} ${copyright_holder}
 
-   License: $license
+   License: ${license}
 
-   Authors: $authors
+   Authors: ${authors}
 
 ************************************************************************ */
 
-qx.Theme.define("$namespace.theme.Appearance",
+qx.Theme.define("${namespace}.theme.Appearance",
 {
-  extend : qx.theme.$theme.Appearance,
+  extend : qx.theme.${theme}.Appearance,
 
   appearances :
   {

@@ -1,21 +1,21 @@
 /* ************************************************************************
 
-   Copyright: $year $copyright_holder
+   Copyright: ${year} ${copyright_holder}
 
-   License: $license
+   License: ${license}
 
-   Authors: $authors
+   Authors: ${authors}
 
 ************************************************************************ */
 
-qx.Theme.define("$namespace.demo.theme.Theme",
+qx.Theme.define("${namespace}.demo.theme.Theme",
 {
   meta :
   {
-    color : $namespace.demo.theme.Color,
-    decoration : $namespace.demo.theme.Decoration,
-    font : $namespace.demo.theme.Font,
-    icon : qx.theme.icon.$icon_theme,
-    appearance : $namespace.demo.theme.Appearance
+    color : ${namespace}.demo.theme.Color,
+    decoration : ${namespace}.demo.theme.Decoration,
+    font : ${namespace}.demo.theme.Font,
+    icon : qx.theme.icon.${icon_theme},
+    appearance : ${namespace}.demo.theme.Appearance
   }
 });
