@@ -24,13 +24,6 @@ nvm use 8
 ```bash
 git clone https://github.com/qooxdoo/qooxdoo.git
 ```
-  
-- **Python v2** - you still need Python v2, again this will go soon but for now please install a recent version 2 (not v3) of
-    python from https://www.python.org/downloads/.  
-    
-    **NOTE** If you're on Windows, make sure you add Python to your PATH
-     
-(Note that there is no longer a dependency on ImageMagick)
 
 ## Installation
 - Install qx-cli, create a sample application and compile it
