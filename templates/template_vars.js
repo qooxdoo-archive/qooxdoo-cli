@@ -42,7 +42,7 @@ const fs = require("fs");
  * @param that {Object} The calling command class' "this" object, in order to be able access its methods.
  * This doesn't seem right and should be solved differently. 
  */
-module.exports = function(argv, data, that){
+module.exports = function(argv, data){
   return {
     "type" : {
       "type": "list", // doesn't support validation
@@ -59,14 +59,14 @@ module.exports = function(argv, data, that){
     "qxpath" : {
       "description" : "the absolute path to the qooxdoo folder",
       "value" : argv.qxpath ? path.normalize(argv.qxpath) : undefined,
-      "default" : path.join(process.cwd(), "qooxdoo", "framework" ),
+      "default" : data.qooxdoo_path,
       "validate" : function(answer) {
         // check if qooxdoo exists
         if ( ! fs.existsSync( answer ) ) {
           throw new Error(`No valid qooxdoo path: <${answer}>.`);
         }
         try {
-          data.qooxdoo_version = that.getQooxdooVersion(answer);
+          data.qooxdoo_version = data.getQooxdooVersion(answer);
         } catch(e){
           throw new Error(e.message);
         }

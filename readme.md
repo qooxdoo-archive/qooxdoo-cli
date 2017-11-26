@@ -120,37 +120,17 @@ Options:
   --watch                   enables continuous compilation             [boolean]
   --verbose                 enables additional progress output to console
                                                                        [boolean]
-
-qx create <application namespace> [options]
-
-Options:
-  -t, --type            Type of the application to create
-          [string] [choices: "desktop", "contrib", "mobile", "native", "server",
-                                                 "website"] [default: "desktop"]
-  -o, --out             Output directory for the application content.
-  -s, --namespace       Top-level namespace.
-  -n, --name            Name of application/library (defaults to namespace).
-  -q, --qxpath          Path to the folder containing the qooxdoo framework.
-                                                [default: "./qooxdoo/framework"]
-  --theme               The name of the theme to be used.    [default: "indigo"]
-  --icontheme           The name of the icon theme to be used.
-                                                             [default: "Oxygen"]
-  -I, --noninteractive  Do not prompt for missing values
-  -V, --verbose         Verbose logging
 ```
 
 ## Create a new project
 
 You can create new project skeletons by using the `qx create` command` It has the following options:
 ```
-  -t, --type            Type of the application to create
-          [string] [choices: "desktop", "contrib", "mobile", "native", "server",
-                                                 "website"] [default: "desktop"]
+  -t, --type            Type of the application to create [default: "desktop"]
   -o, --out             Output directory for the application content.
   -s, --namespace       Top-level namespace.
   -n, --name            Name of application/library (defaults to namespace).
   -q, --qxpath          Path to the folder containing the qooxdoo framework.
-        [default: "./qooxdoo/framework"]
   --theme               The name of the theme to be used.    [default: "indigo"]
   --icontheme           The name of the icon theme to be used.
                                                              [default: "Oxygen"]
@@ -158,12 +138,7 @@ You can create new project skeletons by using the `qx create` command` It has th
   -V, --verbose         Verbose logging
 ```
 
-Currently, only the "desktop" and "contrib" skeleton types are implemented. 
-
 The fastest way to create a new project is to execute `qx create foo -I`. This will create a new application with the namespace "foo", using default values. However, in most cases you wamt to customize the generated application skeleton. `qx create foo` will interactively ask you all information it needs, providing default values where possible. If you are in the top-level folder of the application and want to put the application content into it without creating a subfolder (for example, in a top-level folder of a cloned empty GitHub project), use `--out=.`. 
-
-It is currently necessary to pass the absolute path to 
-the qooxdoo framework folder via the `--qxpath` flag in each case. This is a bug that will be fixed shortly. 
 
 ### qooxdoo-contrib system
 
