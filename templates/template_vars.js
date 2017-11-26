@@ -45,7 +45,7 @@ const fs = require("fs");
 module.exports = function(argv, data, that){
   return {
     "type" : {
-      "type": "list",
+      "type": "list", // doesn't support validation
       "choices": function() {
          // check if skeleton exists
          let skeleton_dir = path.join( data.template_dir, "skeleton");
@@ -54,24 +54,12 @@ module.exports = function(argv, data, that){
       },
       "description" : "type of the application:",
       "value" : argv.type,
-      "default" : "desktop",
-      "validate" : function(answer) {
-        // check if skeleton exists
-        let skeleton_dir = path.join( data.template_dir, "skeleton", answer );
-        if ( ! fs.existsSync( skeleton_dir ) ) {
-          throw new Error(`Application type <${answer}> does not exist or has not been implemented yet.`);
-        }
-        data.skeleton_dir = skeleton_dir;
-        return true;
-      }
+      "default" : "desktop"
     },  
     "qxpath" : {
       "description" : "the absolute path to the qooxdoo folder",
       "value" : argv.qxpath ? path.normalize(argv.qxpath) : undefined,
-      "default" : function(){
-        if ( data.qooxdoo_path ) return path.normalize(data.qooxdoo_path);
-        return undefined;
-      },
+      "default" : path.join(process.cwd(), "qooxdoo", "framework" ),
       "validate" : function(answer) {
         // check if qooxdoo exists
         if ( ! fs.existsSync( answer ) ) {
