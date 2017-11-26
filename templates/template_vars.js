@@ -1,3 +1,28 @@
+/* ************************************************************************
+
+   qooxdoo - the new era of web development
+
+   http://qooxdoo.org
+
+   Copyright:
+     2017 Christian Boulanger and others
+
+   License:
+     MIT: https://opensource.org/licenses/MIT
+     See the LICENSE file in the project's top-level directory for details.
+
+   Authors:
+     * Christian Boulanger (info@bibliograph.org, @cboulanger)
+     * Henner Kollmann (hkollmann)
+
+************************************************************************ */
+
+/*global qx qxcli*/
+
+const process = require("process");
+const path = require("path");
+const fs = require("fs");
+
 /**
  * This module exports dynamic data on the variables used by the templates. 
  * It returns a map. The keys are the names of the variables that are asked
@@ -11,13 +36,7 @@
  * - choices (array||function): the inquirer "list" question's 'choices' data 
  * - validate (function) : a function that returns true if the argument passed to the function
  *   is a valid value
- */
-
-const process = require("process");
-const path = require("path");
-const fs = require("fs");
-
-/**
+ *  
  * @param argv {Object} The calling command class' yargs argv object
  * @param data {Object} Additional data
  * @param that {Object} The calling command class' "this" object, in order to be able access its methods.
