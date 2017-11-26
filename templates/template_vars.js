@@ -59,7 +59,7 @@ module.exports = function(argv, data, that){
     "qxpath" : {
       "description" : "the absolute path to the qooxdoo folder",
       "value" : argv.qxpath ? path.normalize(argv.qxpath) : undefined,
-      "default" : path.join(process.cwd(), "qooxdoo", "framework" ),
+      "default" : data.qooxdoo_path,
       "validate" : function(answer) {
         // check if qooxdoo exists
         if ( ! fs.existsSync( answer ) ) {
