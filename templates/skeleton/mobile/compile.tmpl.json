@@ -19,7 +19,6 @@
   "applications": [
     {
       "class": "${namespace}.Application",
-      "theme": "${namespace}.theme.Theme",
       "name": "${namespace}"
     }
   ],
