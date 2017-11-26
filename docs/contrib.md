@@ -8,6 +8,7 @@
         - [Update the cache](#update-the-cache)
         - [List and install available libraries](#list-and-install-available-libraries)
         - [Remove a contrib library](#remove-a-contrib-library)
+    - [Create a new contrib library project](#create-a-new-contrib-library-project)
     - [Publish new versions of contrib libraries](#publish-new-versions-of-contrib-libraries)
     - [How to list get your contrib repository listed with `qx contrib list`](#how-to-list-get-your-contrib-repository-listed-with-qx-contrib-list)
 
@@ -103,6 +104,23 @@ If you no longer need a contrib library, simply execute `qx contrib remove
 <repo name>`. Please note again that this affects _all_ the libraries 
 contained in this repository. 
 
+<<<<<<< HEAD
+=======
+## Create a new contrib library project
+
+If you are starting a new qooxdoo project and you plan on publishing it as a 
+contrib library, the CLI is there to help you. Please proceed as follows: 
+
+1. Create a new empty repository on GitHub (it shouldn't contain a readme). 
+2. Clone that repository to your local machine, open a terminal and `cd` into 
+   the repository's folder 
+3. Execute `qx create <library namespace> --type contrib`. You will be asked 
+   for more information on the contrib library. 
+4. Work on the library and, if possible, provide a running demo application in 
+   the `demo/default` folder. 
+5. When ready, publish your new contrib (see below). 
+
+>>>>>>> templates
 ## Publish new versions of contrib libraries
 
 The CLI makes it really easy to publish releases of your contrib library. Say 

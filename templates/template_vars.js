@@ -1,12 +1,70 @@
+/**
+ * This module exports dynamic data on the variables used by the templates. 
+ * It returns a map. The keys are the names of the variables that are asked
+ * from the user. Each key takes a map with the following keys:
+ * - description (string) : the part of the question that follows "Please enter "
+ * - value (mixed|function) : If a value is set, it is assumed to be final and not asked from the user. If
+ *   it is 'undefined', it is asked from the user. Can also be a function.
+ * - default (mixed|function): the value's default. Can also be a function.
+ * - optional (boolean) : whether the user needs to enter anything at all
+ * - type (string) : the inquirer question 'type'
+ * - choices (array||function): the inquirer "list" question's 'choices' data 
+ * - validate (function) : a function that returns true if the argument passed to the function
+ *   is a valid value
+ */
+
 const process = require("process");
 const path = require("path");
+const fs = require("fs");
 
-module.exports = function(argv,data){
+/**
+ * @param argv {Object} The calling command class' yargs argv object
+ * @param data {Object} Additional data
+ * @param that {Object} The calling command class' "this" object, in order to be able access its methods.
+ * This doesn't seem right and should be solved differently. 
+ */
+module.exports = function(argv, data, that){
   return {
+    "type" : {
+      "type": "list",
+      "choices": function() {
+         // check if skeleton exists
+         let skeleton_dir = path.join( data.template_dir, "skeleton");
+         const dirs = p => fs.readdirSync(skeleton_dir).filter(f => fs.statSync(path.join(skeleton_dir, f)).isDirectory());
+         return dirs();        
+      },
+      "description" : "type of the application:",
+      "value" : argv.type,
+      "default" : "desktop",
+      "validate" : function(answer) {
+        // check if skeleton exists
+        let skeleton_dir = path.join( data.template_dir, "skeleton", answer );
+        if ( ! fs.existsSync( skeleton_dir ) ) {
+          throw new Error(`Application type <${answer}> does not exist or has not been implemented yet.`);
+        }
+        data.skeleton_dir = skeleton_dir;
+        return true;
+      }
+    },  
     "qxpath" : {
       "description" : "the absolute path to the qooxdoo folder",
-      //"value" : data.qooxdoo_path || undefined, // doesn't work
-      "default" : path.normalize(argv.qxpath)
+      "value" : argv.qxpath ? path.normalize(argv.qxpath) : undefined,
+      "default" : function(){
+        if ( data.qooxdoo_path ) return path.normalize(data.qooxdoo_path);
+        return undefined;
+      },
+      "validate" : function(answer) {
+        // check if qooxdoo exists
+        if ( ! fs.existsSync( answer ) ) {
+          throw new Error(`No valid qooxdoo path: <${answer}>.`);
+        }
+        try {
+          data.qooxdoo_version = that.getQooxdooVersion(answer);
+        } catch(e){
+          throw new Error(e.message);
+        }
+        return true;
+      }
     },  
     "namespace" : {
       "description" : "the namespace of the application",
@@ -62,7 +120,9 @@ module.exports = function(argv,data){
     },
     "qooxdoo_range" : {
       "description" : "the semver range of qooxdoo versions that are compatible with this application",
-      "default" : data.qooxdoo_version 
+      "default" : function() {
+        return data.qooxdoo_version;
+      }  
     },
     "theme": {
       "description" : "the theme of the application",
