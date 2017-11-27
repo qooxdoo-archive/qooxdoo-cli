@@ -6,6 +6,5 @@ node_modules
 .c9
 .vscode
 qooxdoo
-test
 foo
 .contrib-cache.json
