@@ -1,5 +1,5 @@
 # qooxdoo command line interface
-
+[![Build Status](https://travis-ci.org/qooxdoo/qooxdoo-cli.svg?branch=master)](https://travis-ci.org/qooxdoo/qooxdoo-cli)
 This command line utility allows you create, manage and build qooxdoo applications.
 
 ## Develoment status
