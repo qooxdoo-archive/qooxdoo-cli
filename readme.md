@@ -1,15 +1,35 @@
 # qooxdoo command line interface
+
 [![Build Status](https://travis-ci.org/qooxdoo/qooxdoo-cli.svg?branch=master)](https://travis-ci.org/qooxdoo/qooxdoo-cli)
-This command line utility allows you create, manage and build qooxdoo applications.
+
+This command line utility allows you create, build and manage [qooxdoo](http://www.qooxdoo.org) applications.
+
+<!-- TOC -->
+
+- [qooxdoo command line interface](#qooxdoo-command-line-interface)
+    - [Develoment status](#develoment-status)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Installation for Development](#installation-for-development)
+    - [Example command line usage](#example-command-line-usage)
+    - [Documemtation](#documemtation)
+        - [Commands](#commands)
+        - [Compiler](#compiler)
+        - [Create a new project](#create-a-new-project)
+        - [qooxdoo-contrib system](#qooxdoo-contrib-system)
+
+<!-- /TOC -->
 
 ## Develoment status
-Alpha/Proof-of-concept. Everything can and will change.
+Beta. The API is still likely to change, but not fundamentally.
 
 ## Prerequisites
-- **Node** Currently requires NodeJS v8. The released version will be transpiled to support earlier node versions, but whichever
-version you choose to use we recommend you consider `nvm` to ease installing and switching between node versions - you
-can find the Linux version at http://nvm.sh and there is a version for Windows at 
-https://github.com/coreybutler/nvm-windows
+- **Node** Currently requires NodeJS v8. The released version will be 
+  transpiled to support earlier node versions, but whichever version you 
+  choose to use we recommend you consider `nvm` to ease installing and 
+  switching between node versions - you can find the Linux version at 
+  http://nvm.sh and there is a version for Windows at 
+  https://github.com/coreybutler/nvm-windows 
 
 Install `nvm` and then:
 
@@ -18,8 +38,9 @@ nvm install 8
 nvm use 8
 ```
 
-- **Qooxdoo** - you need a clone of the Qooxdoo repository - automatic installation is coming (and will be part of the
-6.0 release) but for now you need to make sure you clone the repo yourself:
+- **Qooxdoo** - you need a clone of the Qooxdoo repository - automatic 
+  installation is coming (and will be part of the 6.0 release) but for now you 
+  need to make sure you clone the repo yourself: 
 
 ```bash
 git clone https://github.com/qooxdoo/qooxdoo.git
@@ -34,12 +55,11 @@ cd myapp
 qx compile
 ```
 
-Note that `qx-cli` needs to be able to find the `qooxdoo` repo that you cloned from github - in the example above,
-it finds it because it discovers a `qooxdoo` directory, but if you place your `qooxdoo` directory elsewhere you
-should use this syntax to create an application:
-```
-qx create myapp --qxpath /path/to/qooxdoo/repo
-```
+Note that `qx-cli` needs to be able to find the `qooxdoo` repo that you cloned 
+from github - in the example above, it finds it because it discovers a 
+`qooxdoo` directory, but if you place your `qooxdoo` directory elsewhere you 
+should use this syntax to create an application: ``` qx create myapp --qxpath 
+/path/to/qooxdoo/repo ``` 
 
 ## Installation for Development
 - Install qx-cli 
@@ -72,16 +92,10 @@ qx contrib install johnspackman/UploadMgr # install UploadMgr contrib library
 qx compile
 ```
 
-See [here](dpcs/contrib.md) if you don't get any contribs listed or if the ones you are looking for 
-are missing.
-
-## TODO
-- [x] make it work, i.e., compile :-) 
-- [ ] create an npm installable package
-- [x] install qx as global executable
-----
-- [ ] qx contrib install without arguemnts installs all contribs listed in `contrib.json`
-- [ ] Allow use of relative paths to the qooxdoo library for `qx create`
+Use `--all` if you don't get any contribs listed or if the ones you are 
+looking for are missing. The reason is that they might not declare 
+compatibility to the qooxdoo version you are using yet, even though they are 
+technically compatible. 
 
 ## Documemtation
 
@@ -94,13 +108,23 @@ Typical usage:
 Type qx <command> --help for options and subcommands.
 
 Commands:
-  compile [options] [configFile]       compiles the current application, using
-                                       compile.json
-  contrib <command> [options]          manages qooxdoo contrib libraries
-  create <application name> [options]  creates a qooxdoo application skeleton
-  upgrade [options]                    upgrades a qooxdoo application
+  compile [configFile]                      compiles the current application,
+                                            using compile.json
+  contrib <command> [options]               manages qooxdoo contrib libraries
+  create <application namespace> [options]  creates a new qooxdoo project.
+  upgrade [options]                         upgrades a qooxdoo application
 
+````
 
+To see the subcommands parameters and options, just type in `qx <command>`.
+
+### Compiler
+
+To compile a qooxdoo project into a state that can be opened in a browser, use 
+`qx compile`. This is the CLI frontend for the [qooxdoo-compiler library](https://github.com/qooxdoo/qooxdoo-compiler/blob/master/README.md). 
+The command has the following options: 
+
+```
 qx compile [options] [configFile]
 
 Options:
@@ -121,8 +145,9 @@ Options:
   --verbose                 enables additional progress output to console
                                                                        [boolean]
 ```
+The compiler relies on the information contained in `compile.json`. Documentation for the `compile.json` format is [here](docs/compile-json.md).
 
-## Create a new project
+### Create a new project
 
 You can create new project skeletons by using the `qx create` command` It has the following options:
 ```
@@ -142,8 +167,34 @@ The fastest way to create a new project is to execute `qx create foo -I`. This w
 
 ### qooxdoo-contrib system
 
-For more on qooxdoo's "plugin architecture" and the `qx contrib` commands, see [here](docs/contrib.md).
+qooxdoo's "plugin architecture" is called "qooxdoo-contrib"  (short for "contributions"). It does not only allow to extend one's own application with useful functionality such as file uploads, dialog widgets, vector graphics and much more, qooxdoo-contrib will also host components that have previously shipped with the framework, such as the API viewer or the playground. The CLI supports the use, creation and mainenance of contributions with the `qx contrib` subcommands. 
 
-### compile.json
-Documentation for the compile.json format is [docs/compile-json.md](docs/compile-json.md).
+```
+qx contrib <command> [options]
+
+Commands:
+  install [repository]  installs the latest compatible release of a contrib
+                        library (as per Manifest.json). Use "-r <release tag>"
+                        to install a particular release.
+  list [repository]     if no repository name is given, lists all available
+                        contribs that are compatible with the project's qooxdoo
+                        version ("--all" lists incompatible ones as well).
+                        Otherwise, list all compatible contrib libraries.
+  publish               publishes a new release of the contrib on GitHub.
+                        Requires a GitHub access token. By default, makes a
+                        patch release.
+  remove [repository]   removes a contrib library from the configuration.
+  update [repository]   updates information on contrib libraries from github.
+                        Has to be called before the other commands.
+
+Options:
+  -T, --token    Use a GitHub access token
+  -f, --file     Output result to a file
+  -v, --verbose  Verbose logging
+  -q, --quiet    No output
+
+```
+
+Please see the detailed documentation [here](docs/contrib.md).
+
 
