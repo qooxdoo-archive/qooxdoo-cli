@@ -1,18 +1,18 @@
 /* ************************************************************************
 
-   Copyright: $year $copyright_holder
+   Copyright: ${year} ${copyright_holder}
 
-   License: $license
+   License: ${license}
 
-   Authors: $authors
+   Authors: ${authors}
 
 ************************************************************************ */
 
 /**
  * This is an example of a contrib library, providing a very special button 
- * @asset($namespace/*)
+ * @asset(${namespace}/*)
  */
-qx.Class.define("$namespace.Button",
+qx.Class.define("${namespace}.Button",
 {
   extend : qx.ui.form.Button,
 });

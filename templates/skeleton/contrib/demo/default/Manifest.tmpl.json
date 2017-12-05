@@ -1,21 +1,21 @@
 {
   "info" : 
   {
-    "name" : "$name Demo",
+    "name" : "${name} Demo",
 
-    "summary" : "This is a demo of the $namespace library",
+    "summary" : "This is a demo of the ${namespace} library",
 
-    "license" : "$license",
+    "license" : "${license}",
 
-    "authors" : $author_map,
+    "authors" : ${author_map},
 
-    "version" : "$version",
-    "qooxdoo-range": "$qooxdoo_range"
+    "version" : "${version}",
+    "qooxdoo-range": "${qooxdoo_range}"
   },
   
   "provides" : 
   {
-    "namespace"   : "$namespace.demo",
+    "namespace"   : "${namespace}.demo",
     "encoding"    : "utf-8",
     "class"       : "source/class",
     "resource"    : "source/resource",

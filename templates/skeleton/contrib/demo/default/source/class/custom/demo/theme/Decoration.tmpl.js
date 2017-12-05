@@ -1,16 +1,16 @@
 /* ************************************************************************
 
-   Copyright: $year $copyright_holder
+   Copyright: ${year} ${copyright_holder}
 
-   License: $license
+   License: ${license}
 
-   Authors: $authors
+   Authors: ${authors}
 
 ************************************************************************ */
 
-qx.Theme.define("$namespace.demo.theme.Decoration",
+qx.Theme.define("${namespace}.demo.theme.Decoration",
 {
-  extend : qx.theme.$theme.Decoration,
+  extend : qx.theme.${theme}.Decoration,
 
   decorations :
   {
