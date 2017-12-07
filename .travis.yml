@@ -8,6 +8,7 @@ install:
   - npm install
   - npm link
   - npm link qooxdoo-compiler/
+  - chmod g+x test/test.linux.sh
 script:
   - echo "Simple testing of CLI ..."
   - npm test
