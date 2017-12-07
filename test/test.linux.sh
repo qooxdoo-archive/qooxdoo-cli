@@ -1,3 +1,4 @@
+set -x 
 rm -rf myapp
 qx create myapp -I
 cd myapp
