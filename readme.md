@@ -38,14 +38,6 @@ nvm install 8
 nvm use 8
 ```
 
-- **Qooxdoo** - you need a clone of the Qooxdoo repository - automatic 
-  installation is coming (and will be part of the 6.0 release) but for now you 
-  need to make sure you clone the repo yourself: 
-
-```bash
-git clone https://github.com/qooxdoo/qooxdoo.git
-```
-
 ## Installation
 - Install qx-cli, create a sample application and compile it
 ```bash
@@ -54,12 +46,6 @@ qx create myapp
 cd myapp
 qx compile
 ```
-
-Note that `qx-cli` needs to be able to find the `qooxdoo` repo that you cloned 
-from github - in the example above, it finds it because it discovers a 
-`qooxdoo` directory, but if you place your `qooxdoo` directory elsewhere you 
-should use this syntax to create an application: ``` qx create myapp --qxpath 
-/path/to/qooxdoo/repo ``` 
 
 ## Installation for Development
 - Install qx-cli 
@@ -74,9 +60,13 @@ npm install
 npm link
 ```
 
-- If you want to use an unreleased version of qxcompiler, download it and 
+- If you want to use an unreleased version of qxcompiler, download it with `git clone https://github.com/qooxdoo/qooxdoo-compiler` and 
   `npm link path/to/qxcompiler` from the `qx-cli` directory.
 
+- If you want to use an unreleased version of qooxdoo, download it with `git clone https://github.com/qooxdoo/qooxdoo` and 
+  `npm link path/to/qooxdoo` from the `qx-cli` directory.
+
+- Pay attention: the linking must be repeated after an `npm install`. `npm install` substitutes the links with the downloaded version.
 
 ## Example command line usage
 ```bash
