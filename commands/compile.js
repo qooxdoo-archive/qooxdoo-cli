@@ -19,5 +19,6 @@
 /**
  * Command to handle compilation of the current project
  */
-require("../lib/qxcli/commands/Compile");
+require("../lib/qxcli");
+
 module.exports = qxcli.commands.Compile.getYargsCommand();
