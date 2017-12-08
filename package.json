@@ -4,7 +4,13 @@
   "description": "The command line interface for qooxdoo developers",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-os test.os"
+  },
+  "cross-os": {
+    "test.os": {
+      "win32": "test\\test.win32.cmd",
+      "linux": "test/test.linux.sh"
+    }
   },
   "repository": {
     "type": "git",
@@ -39,6 +45,9 @@
     "semver": "^5.3.0",
     "upath": "^1.0.2",
     "yargs": "^8.0.1"
+  },
+  "devDependencies": {
+    "cross-os": "^1.2.2"
   },
   "bin": {
     "qx": "qx"
