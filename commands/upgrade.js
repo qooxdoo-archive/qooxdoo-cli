@@ -19,7 +19,5 @@
 /**
  * Script to initialise a new qooxdoo application, or upgrade an old (pre-6.0) application
  */
-
-require("../lib/qxcli.js");
-
-qxcli.commands.Upgrade.yargsInstall(exports);
+require("../lib/qxcli/commands/Upgrade");
+module.exports = qxcli.commands.Upgrade.getYargsCommand();
