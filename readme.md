@@ -66,7 +66,7 @@ npm link
 - If you want to use an unreleased version of qooxdoo, download it with `git clone https://github.com/qooxdoo/qooxdoo` and 
   `npm link path/to/qooxdoo` from the `qx-cli` directory.
 
-- Pay attention: the linking must be repeated after an `npm install`. `npm install` substitutes the links with the downloaded version.
+- Pay attention: the linking must be repeated after an `npm install`. `npm install` substitutes the links with the NPM modules.
 
 ## Example command line usage
 ```bash
