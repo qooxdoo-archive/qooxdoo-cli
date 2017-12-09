@@ -66,7 +66,7 @@ module.exports = function(argv, data){
           throw new Error(`No valid qooxdoo path: <${answer}>.`);
         }
         try {
-          data.qooxdoo_version = data.getQooxdooVersion(answer);
+          data.qooxdoo_version = data.getLibraryVersion(answer);
         } catch(e){
           throw new Error(e.message);
         }
