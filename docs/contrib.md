@@ -128,14 +128,16 @@ your repo, you can execute `qx contrib publish`. The command has the following
 options: 
 
 ```   
-  -T, --token           Use a GitHub access token
-  -f, --file            Output result to a file
-  -v, --verbose         Verbose logging
-  -q, --quiet           No output
-  -t, --type            Set the release type
+  --type, -t            Set the release type
            [string] [choices: "major", "premajor", "minor", "preminor", "patch",
                                     "prepatch", "prerelease"] [default: "patch"]
-  -I, --noninteractive  Do not prompt user
+  --noninteractive, -I  Do not prompt user
+  --token, -T           Use a GitHub access token
+  --version, -V         Use given version number
+  --quiet, -q           No output
+  --message, -m         Set commit/release message
+  --dryrun              Show result only, do not publish to GitHub
+  --verbose, -v         Verbose logging
 ``` 
 
 You need to 
