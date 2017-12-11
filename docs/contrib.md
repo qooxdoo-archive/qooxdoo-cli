@@ -104,8 +104,7 @@ If you no longer need a contrib library, simply execute `qx contrib remove
 <repo name>`. Please note again that this affects _all_ the libraries 
 contained in this repository. 
 
-<<<<<<< HEAD
-=======
+
 ## Create a new contrib library project
 
 If you are starting a new qooxdoo project and you plan on publishing it as a 
@@ -120,7 +119,6 @@ contrib library, the CLI is there to help you. Please proceed as follows:
    the `demo/default` folder. 
 5. When ready, publish your new contrib (see below). 
 
->>>>>>> templates
 ## Publish new versions of contrib libraries
 
 The CLI makes it really easy to publish releases of your contrib library. Say 

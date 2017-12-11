@@ -39,6 +39,7 @@
     "inquirer": "^4.0.0",
     "json-to-ast": "https://github.com/johnspackman/json-to-ast.git#editable-json",
     "node-fetch": "^1.7.3",
+    "qooxdoo-sdk": "^5.0.2",
     "qooxdoo": "^5.0.1",
     "qxcompiler": "^0.1.31",
     "rimraf": "^2.6.1",
