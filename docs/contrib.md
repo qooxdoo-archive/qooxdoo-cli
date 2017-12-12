@@ -11,6 +11,8 @@
     - [Create a new contrib library project](#create-a-new-contrib-library-project)
     - [Publish new versions of contrib libraries](#publish-new-versions-of-contrib-libraries)
     - [How to list get your contrib repository listed with `qx contrib list`](#how-to-list-get-your-contrib-repository-listed-with-qx-contrib-list)
+        - [qooxdoo.json](#qooxdoojson)
+        - [Contribution compatibility management](#contribution-compatibility-management)
 
 <!-- /TOC -->
 
@@ -162,24 +164,47 @@ push it to the master branch before releasing the new version.
   following ways:
   
   a) If the repository contains just **one single library**, its 
-  `Manifest.json` file **should** be placed in the repository's root 
-  directory. 
+  `Manifest.json` file must be placed in the repository's root 
+  directory (unless you use `qoodoo.json`, see below)
   
   b) If you ship **several libraries** in one repository, or you 
   want to place the `Manifest.json` file outside of the root directory, you 
-  **must** provide a `qooxdoo.json` file in the root dir. This file has the 
-  following syntax: 
+  must provide a `qooxdoo.json` file in the root dir (see below)
+
+- Make sure to keep the "qooxdoo-version" key up to date.
+
+### qooxdoo.json
+
+It is recommended, but not mandatory, to include a `qooxdoo.json` file in the 
+root of the repository. This metadata file allows the discovery of libraries 
+and applications/demos in a repository. It has the  following syntax: 
      
- ```
- {
-   "contribs": [
-    { "path":"./path/to/dir-containing-manifest1" },
-    { "path":"./path/to/dir-containing-manifest2" },
+```
+{
+  "libraries": [
+   { "path":"relative-path/to/dir-containing-manifest1" },
+   { "path":"relative-path/to/dir-containing-manifest2" },
+   ...
+ ],
+  "applications": [
+	  { "path": "relative-path/to/demo1"},
     ...
-  ]
+	]
+}
+``` 
+
+If you do not include the file, the following paths are assumed (for a contrib)
+
+````
+{
+	"libraries": [
+		{ "path": "." }
+	],
+	"applications": [
+		{ "path": "demo/default"}
+	]
 }
 ```
-- Make sure to keep the "qooxdoo-version" key up to date (see below)
 
 ### Contribution compatibility management
 
