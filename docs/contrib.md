@@ -60,10 +60,10 @@ The first step is always to update the local cache of available contrib librarie
 qx contrib update [repository]
 
 Options:
-  -T, --token    Use a GitHub access token
-  -f, --file     Output result to a file
-  -v, --verbose  Verbose logging
-  -q, --quiet    No output
+  --file, -f     Output result to a file
+  --token, -T    Use a GitHub access token
+  --verbose, -v  Verbose logging
+  --quiet, -q    No output
 ```
 
 If you use a personal github access token, you can update the local cache with 
