@@ -11,6 +11,8 @@
     - [Create a new contrib library project](#create-a-new-contrib-library-project)
     - [Publish new versions of contrib libraries](#publish-new-versions-of-contrib-libraries)
     - [How to list get your contrib repository listed with `qx contrib list`](#how-to-list-get-your-contrib-repository-listed-with-qx-contrib-list)
+        - [qooxdoo.json](#qooxdoojson)
+        - [Contribution compatibility management](#contribution-compatibility-management)
 
 <!-- /TOC -->
 
@@ -58,10 +60,10 @@ The first step is always to update the local cache of available contrib librarie
 qx contrib update [repository]
 
 Options:
-  -T, --token    Use a GitHub access token
-  -f, --file     Output result to a file
-  -v, --verbose  Verbose logging
-  -q, --quiet    No output
+  --file, -f     Output result to a file
+  --token, -T    Use a GitHub access token
+  --verbose, -v  Verbose logging
+  --quiet, -q    No output
 ```
 
 If you use a personal github access token, you can update the local cache with 
@@ -128,14 +130,16 @@ your repo, you can execute `qx contrib publish`. The command has the following
 options: 
 
 ```   
-  -T, --token           Use a GitHub access token
-  -f, --file            Output result to a file
-  -v, --verbose         Verbose logging
-  -q, --quiet           No output
-  -t, --type            Set the release type
+  --type, -t            Set the release type
            [string] [choices: "major", "premajor", "minor", "preminor", "patch",
                                     "prepatch", "prerelease"] [default: "patch"]
-  -I, --noninteractive  Do not prompt user
+  --noninteractive, -I  Do not prompt user
+  --token, -T           Use a GitHub access token
+  --version, -V         Use given version number
+  --quiet, -q           No output
+  --message, -m         Set commit/release message
+  --dryrun              Show result only, do not publish to GitHub
+  --verbose, -v         Verbose logging
 ``` 
 
 You need to 
@@ -160,24 +164,47 @@ push it to the master branch before releasing the new version.
   following ways:
   
   a) If the repository contains just **one single library**, its 
-  `Manifest.json` file **should** be placed in the repository's root 
-  directory. 
+  `Manifest.json` file must be placed in the repository's root 
+  directory (unless you use `qoodoo.json`, see below)
   
   b) If you ship **several libraries** in one repository, or you 
   want to place the `Manifest.json` file outside of the root directory, you 
-  **must** provide a `qooxdoo.json` file in the root dir. This file has the 
-  following syntax: 
+  must provide a `qooxdoo.json` file in the root dir (see below)
+
+- Make sure to keep the "qooxdoo-version" key up to date.
+
+### qooxdoo.json
+
+It is recommended, but not mandatory, to include a `qooxdoo.json` file in the 
+root of the repository. This metadata file allows the discovery of libraries 
+and applications/demos in a repository. It has the  following syntax: 
      
- ```
- {
-   "contribs": [
-    { "path":"./path/to/dir-containing-manifest1" },
-    { "path":"./path/to/dir-containing-manifest2" },
+```
+{
+  "libraries": [
+   { "path":"relative-path/to/dir-containing-manifest1" },
+   { "path":"relative-path/to/dir-containing-manifest2" },
+   ...
+ ],
+  "applications": [
+	  { "path": "relative-path/to/demo1"},
     ...
-  ]
+	]
+}
+``` 
+
+If you do not include the file, the following paths are assumed (for a contrib)
+
+````
+{
+	"libraries": [
+		{ "path": "." }
+	],
+	"applications": [
+		{ "path": "demo/default"}
+	]
 }
 ```
-- Make sure to keep the "qooxdoo-version" key up to date (see below)
 
 ### Contribution compatibility management
 
