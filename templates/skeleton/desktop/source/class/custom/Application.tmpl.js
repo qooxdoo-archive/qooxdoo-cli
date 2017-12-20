@@ -63,7 +63,8 @@ qx.Class.define("${namespace}.Application",
       doc.add(button1, {left: 100, top: 50});
 
       // Add an event listener
-      button1.addListener("execute", function(e) {
+      button1.addListener("execute", function() {
+        /* eslint no-alert: "off" */
         alert("Hello World!");
       });
     }
