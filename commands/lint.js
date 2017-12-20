@@ -5,14 +5,14 @@
    http://qooxdoo.org
 
    Copyright:
-     2017 Christian Boulanger
+     2017 Henner Kollmann
 
    License:
      MIT: https://opensource.org/licenses/MIT
      See the LICENSE file in the project's top-level directory for details.
 
    Authors:
-     * Christian Boulanger (info@bibliograph.org, @cboulanger)
+     * Henner Kollmann (Henner.Kollmann@gmx.de, @hkollmann)
 
 ************************************************************************ */
 require("../lib/qxcli/commands/Lint");
