@@ -181,6 +181,7 @@ By default, only translation strings which are used by the classes are included 
 
 ## TypeScript
 ** Note that this has changed: you no longer add a new target **
+
 TypeScript can be output by either using the `--typescript` option to `qx compile`, or by modifying your target(s) to add `typescript: true`; if you use a string instead of `true`, the string is the name of the file which is generated inside the target output directory, for example:
 ```
     /** Targets */
@@ -194,6 +195,35 @@ TypeScript can be output by either using the `--typescript` option to `qx compil
     ]
 ```
 The TypeScript definition is output into `./source-output/qooxdoo.d.ts`
+
+## Eslint
+The qx lint command is configured by an eslintConfig section in compile.js:
+
+```
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "globals": {
+      "JSZip": false
+    }, 
+    "extends": [
+      "qx/browser"          
+    ] 
+  }
+```
+The syntax is the same as in in package.json. Explanation can be found here: https://eslint.org/docs/user-guide/configuring.
+
+If you omit the eslintConfig section a default will be used:
+```
+  "eslintConfig": {
+    "extends": [
+      "qx/browser"          
+    ] 
+  }
+```
+** The namespaces of all libraries will be added to the globals section automatically! **
 
 ## compile.js
 Configuration files do not support processes, job executions, or even macros - if you want to add basic processing (eg for macros), use a .js file to manipulate the data. 
