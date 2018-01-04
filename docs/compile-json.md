@@ -36,7 +36,12 @@ These key concepts appear in every compile.json, for example:
             "outputPath": "build-output"
         }
     ],
-    "defaultTarget": "source"
+    "defaultTarget": "source",
+    
+    /** Path Mappings */
+    "path-mappings": {
+        "../qooxdoo": "/some/folder/qooxdoo"
+    }
 }
 ```
 
@@ -56,7 +61,7 @@ The `applications` key is an array of objects, and each object can contain:
 - `type` - (**optional**, **advanced**) this is "browser" (the default) for the typical, web browser based, application or "node" for a node.js server
 application.
 `loaderTemplate` - (**optional**, **advanced**) this is the boot loader template file, usually determined automatically from the application `type` 
-`minification` - (**optional**) determines the minification to be used for this application, if the target supports it; overrides other settings.  Can be `none`, `minify`, or `mangle`
+`minify` - (**optional**) determines the minification to be used for this application, if the target supports it; overrides other settings.  Can be `off`, `minify`, `mangle` or `beautify`; takes precedence over the target's `minify` setting.
 
 A complete example is:
 ```
@@ -85,7 +90,7 @@ The `targets` key is an array of objects, one for each possible target that can 
 - `writeCompileInfo` (**optional**) if true, the target will write a `compile-info.json` and `resources.json` into the application's output directory, containing the data structures required to generate an application
 - `uri` (**optional**) the URI used to load resources for this target; by default, this is assumed to be relative to the application's index.html
 - `typescript` - see below
-- `minification` - (**optional**) determines the minification to be used for applications, if the target supports it; can be overridden on a per application basis.  Can be `none`, `minify`, or `mangle`
+- `minify` - (**optional**) determines the minification to be used for applications, if the target supports it; can be overridden on a per application basis.  Can be `off`, `minify`, `mangle`, or `beautify`.
 - `addCreatedAt` - (**optional**) if true, this will cause every object to have a hidden property called `$$createdAt` which points to an object containing `filename`, `lineNumber`, and `column` properties
 
 ## Parts
@@ -178,6 +183,21 @@ Qooxdoo applications are by default compiled only using the "en" locale for tran
 
 By default, only translation strings which are used by the classes are included - if you want to copy *all* translation strings you can include `writeAllTranslations: true` at the top level.
 
+
+## Path Mappings
+In many circumstances, you do not need to worry about path mappings because the compiler will copy (or transpile) source code and resources from all libraries into the one output directory.  In production, your application will never need to load files outside of the output directory, but during development your browser will need to have access to the original, untranspiled source files in order to be able to debug your original code.
+
+The `"path-mappings"` configuration is a generic means to locate files on disk inside the URI addsress space of the application; for example, if a library like Qooxdoo is stored outside of your web root you might choose to add a mapping like this:
+
+```
+    "path-mappings": {
+        "../qooxdoo": "/some/virtual/uri/path/qooxdoo"
+    }
+```
+
+This tells the compiler that when any file in the directory "../qooxdoo" is needed, it should be loaded via the URI "/some/virtual/uri/path/qooxdoo".  Note that the "../qooxdoo" in this example refers to a path on disk (and is relative to the location of `compile.json`), whereas the "/some/virtual/uri/path/qooxdoo" is the URI.
+
+It is up to you to implement the mapping inside your web server so that the "/some/virtual/uri/path/qooxdoo" URI is able to load the files from `../qooxdoo`
 
 ## TypeScript
 ** Note that this has changed: you no longer add a new target **
