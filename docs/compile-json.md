@@ -61,7 +61,7 @@ The `applications` key is an array of objects, and each object can contain:
 - `type` - (**optional**, **advanced**) this is "browser" (the default) for the typical, web browser based, application or "node" for a node.js server
 application.
 `loaderTemplate` - (**optional**, **advanced**) this is the boot loader template file, usually determined automatically from the application `type` 
-`minification` - (**optional**) determines the minification to be used for this application, if the target supports it; overrides other settings.  Can be `none`, `minify`, or `mangle`
+`minify` - (**optional**) determines the minification to be used for this application, if the target supports it; overrides other settings.  Can be `off`, `minify`, `mangle` or `beautify`; takes precedence over the target's `minify` setting.
 
 A complete example is:
 ```
@@ -90,7 +90,7 @@ The `targets` key is an array of objects, one for each possible target that can 
 - `writeCompileInfo` (**optional**) if true, the target will write a `compile-info.json` and `resources.json` into the application's output directory, containing the data structures required to generate an application
 - `uri` (**optional**) the URI used to load resources for this target; by default, this is assumed to be relative to the application's index.html
 - `typescript` - see below
-- `minification` - (**optional**) determines the minification to be used for applications, if the target supports it; can be overridden on a per application basis.  Can be `none`, `minify`, or `mangle`
+- `minify` - (**optional**) determines the minification to be used for applications, if the target supports it; can be overridden on a per application basis.  Can be `off`, `minify`, `mangle`, or `beautify`.
 - `addCreatedAt` - (**optional**) if true, this will cause every object to have a hidden property called `$$createdAt` which points to an object containing `filename`, `lineNumber`, and `column` properties
 
 ## Parts
