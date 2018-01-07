@@ -4,15 +4,11 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+This is the built in web server for Qooxdoo, serving your application.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+You can find Qooxdoo on the web at http://www.qooxdoo.org and on GitHub  at http://github.com/qooxdoo/qooxdoo.  
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+If you have questions, please ask them at [StackOverflow](https://stackoverflow.com/questions/tagged/qooxdoo) and make sure you use the "qooxdoo" tag when you post.
 
+If you want to discuss anything, please contact us using Gitter in the [qooxdoo/qooxdoo](http://gitter.im/qooxdoo/qooxdoo) group, either [via a web browser](http://gitter.im/qooxdoo/qooxdoo) or via the Gitter app.
 
-[jekyll-organization]: https://github.com/jekyll
