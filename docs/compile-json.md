@@ -255,9 +255,9 @@ Example:
 
 ```
 function compile(data, callback) {
-	console.log('I'm here');	
+    console.log("I'm here");
     let err = null;
-	callback(err, data);
+    callback(err, data);
 }
 ```
 
