@@ -46,7 +46,9 @@
     "rimraf": "^2.6.1",
     "semver": "^5.3.0",
     "upath": "^1.0.2",
-    "yargs": "^8.0.1"
+    "yargs": "^8.0.1",
+    "eslint": "^4.13.0",
+    "eslint-config-qx": "^0.0.7"
   },
   "devDependencies": {
     "cross-os": "^1.2.2"
