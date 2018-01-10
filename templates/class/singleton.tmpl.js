@@ -3,8 +3,6 @@ ${header}
 /**
  * This is a qooxdoo singleton class
  *
- * //@asset(${namespace}/*)
- * //@require(${namespace}/*)
  */
 qx.Class.define("${classname}",
 {
@@ -13,25 +11,17 @@ qx.Class.define("${classname}",
   include : [],
   type : "singleton",
 
-  /*
-  *****************************************************************************
-     CONSTRUCTOR
-  *****************************************************************************
-  */
-
   /**
-   * Create a new instance
+   * Create a the singleton
    */
   construct : function() {
-  	
+    // If you want to call the parent constructor, use
+    // this.base(arguments);
   },
 
-/*
-  *****************************************************************************
-     PROPERTIES
-  *****************************************************************************
-  */
-
+  /**
+   * The properties of the singleton
+   */
   properties :
   {
     /** The foo property of the object */
@@ -44,42 +34,36 @@ qx.Class.define("${classname}",
     }
   },
 
-  /*
-  *****************************************************************************
-     EVENTS
-  *****************************************************************************
-  */
-
+  /**
+   * Declaration of events fired by class instances in addition
+   * to the property change events
+   */  
   events :
   {
     /** Fired when something happens */
     "changeSituation" : "qx.event.type.Data"
   },    
   
-
-  /*
-  *****************************************************************************
-     MEMBERS
-  *****************************************************************************
-  */
-
+  /**
+   * Methods and simple properties of the singleton
+   */
   members :
   {
     /**
-     * First method
-     * @param foo {String} The foo parameter
-     * @param foo {Number} The bar parameter
-     * @return {String} The result of the method.
+     * Singleton method
+     * @param {String} foo The foo parameter
+     * @param {Number} bar The bar parameter
+     * @return {void} The result of the method.
      */
-    myMethod : function()
+    myMethod : function(foo, bar)
     {
+      //
     },
 
-    /**
-     * First apply method
-     */
+    /** Applies the foo property */
     _applyFoo : function(value, old)
     {
-    }    
+      //
+    } 
   }
 });

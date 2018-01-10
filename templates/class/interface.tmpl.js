@@ -2,35 +2,27 @@ ${header}
 
 /**
  * This is a qooxdoo interface
- *
  */
 qx.Interface.define("${classname}",
 {
-  
   //extend : my.extended.interface,  
 
-  /*
-  *****************************************************************************
-     EVENTS
-  *****************************************************************************
-  */
-
+  /**
+   * Events that must be declared by this interface
+   */
   events :
   {
     /** Fired when something happens */
     "changeSituation" : "qx.event.type.Data"
   },  
 
-  /*
-  *****************************************************************************
-     MEMBERS
-  *****************************************************************************
-  */
-
+  /**
+   * Methonds that must be declared by this interface
+   */
   members :
   {
     /**
-     * First method
+     * Interface method
      * @param foo {String} The foo parameter
      * @param foo {Number} The bar parameter
      * @return {String} The result of the method.

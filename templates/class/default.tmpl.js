@@ -2,35 +2,24 @@ ${header}
 
 /**
  * This is a qooxdoo class
- *
- * //@asset(${namespace}/*)
- * //@require(${namespace}/*)
  */
 qx.Class.define("${classname}",
 {
   
   extend : ${extend},
-  include : [],
-
-  /*
-  *****************************************************************************
-     CONSTRUCTOR
-  *****************************************************************************
-  */
+  //include : [ Mixin1, Mixin2 ],
 
   /**
-   * Create a new instance
+   * Constructor
    */
   construct : function() {
-  	
+    // If you want to call the parent constructor, use
+    // this.base(arguments);
   },
 
-/*
-  *****************************************************************************
-     PROPERTIES
-  *****************************************************************************
-  */
-
+  /**
+   * The properties of the class which can be accessed by getters and setters
+   */
   properties :
   {
     /** The foo property of the object */
@@ -42,65 +31,54 @@ qx.Class.define("${classname}",
       event : "changeFoo"
     }
   },
-  
 
-  /*
-  *****************************************************************************
-     EVENTS
-  *****************************************************************************
-  */
-
+  /**
+   * Declaration of events fired by class instances in addition
+   * to the property change events
+   */
   events :
   {
     /** Fired when something happens */
     "changeSituation" : "qx.event.type.Data"
   },  
 
-  /*
-  *****************************************************************************
-     STATICS
-  *****************************************************************************
-  */
-
+  /**
+   * Static properties of the class itself
+   */
   statics :
   {
     /** The foo static property of the class object */
     FOO : "bar"
   },  
 
-  /*
-  *****************************************************************************
-     MEMBERS
-  *****************************************************************************
-  */
-
+  /**
+   * The methods and simple properties of this class
+   */
   members :
   {
     /**
      * First method
-     * @param foo {String} The foo parameter
-     * @param foo {Number} The bar parameter
-     * @return {String} The result of the method.
+     * @param {String} foo The foo parameter
+     * @param {Number} bar The bar parameter
+     * @return {void} The result of the method.
      */
-    myMethod : function()
+    myMethod : function(foo, bar)
     {
+      //
     },
     
-    /**
-     * First apply method
-     */
+    /** Applies the foo property */
     _applyFoo : function(value, old)
     {
-    }    
+      //
+    }
   },
 
-  /*
-  *****************************************************************************
-     DESTRUCTOR
-  *****************************************************************************
-  */
-
+  /**
+   * Use for disposing objects created by class instances
+   */
   destruct : function()
   {
+    //
   }  
 });
