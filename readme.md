@@ -17,7 +17,7 @@ This command line utility allows you create, build and manage [qooxdoo](http://w
         - [Compiler](#compiler)
         - [Create a new project](#create-a-new-project)
         - [qooxdoo-contrib system](#qooxdoo-contrib-system)
-        - [Manifest.json](#manifest.json)
+        - [Manifest.json](#manifestjson)
 
 <!-- /TOC -->
 
@@ -189,9 +189,6 @@ To provide additional information and configuration for qooxdoo libraries the fi
 
 ```json
 {
-  // "info" : { ... },
-  // "provides" : { ... },
-
   "externalResources" :
   {
     "script": [
