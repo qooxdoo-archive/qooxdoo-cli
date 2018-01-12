@@ -17,6 +17,7 @@ This command line utility allows you create, build and manage [qooxdoo](http://w
         - [Compiler](#compiler)
         - [Create a new project](#create-a-new-project)
         - [qooxdoo-contrib system](#qooxdoo-contrib-system)
+        - [Manifest.json](#manifestjson)
 
 <!-- /TOC -->
 
@@ -182,3 +183,20 @@ Commands:
 Please see the detailed documentation [here](docs/contrib.md).
 
 
+### Manifest.json
+
+To provide additional information and configuration for qooxdoo libraries the file `Manifest.json` can be used - just like with the old python tool chain. A small difference is the added option to add static javascript and stylesheet files which will automatically be loaded into the application. Please refer to the [detailed documentation](docs/Manifest.md) for further information. Here is a shortened example of how to add static files:
+
+```json
+{
+  "externalResources" :
+  {
+    "script": [
+      "js/customscript.js",
+    ],
+    "css": [
+      "styles/style.css"
+    ]
+  }
+}
+```
