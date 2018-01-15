@@ -13,5 +13,6 @@ rm -rf contrib  || exit $?
 qx contrib install -v || exit $?
 qx compile -v --clean || exit $?
 qx contrib remove cboulanger/qx-contrib-Dialog -v || exit $?
+qx add class myapp.Window --extend=qx.ui.window.Window || exit $?
 qx compile -v --clean || exit $?
 qx lint --fix ||  exit $?
