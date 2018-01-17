@@ -1,5 +1,30 @@
 # qooxdoo command line interface
 
+# THIS PROJECT HAS BEEN MOVED
+Please note that the Qooxdoo Command Line Interface is alive and well - it has been integrated into the [qooxdoo-compiler](https://github.com/qooxdoo/qooxdoo-compiler) project and no further work should be done on this repo.
+
+The npm module `qx-cli` will be similarly deprecated, and from now on all you have to do to get started is:
+
+```
+$ npm install -g qooxdoo-compiler
+$ qx create myapp
+$ cd myapp
+$ qx compile
+```
+
+Don't forget, that if you have previously installed `qx-cli`, you **MUST** issue this command:
+
+```
+$ npm uninstall -g qx-cli
+```
+
+All open issues have been moved to [qooxdoo-compiler/issues](https://github.com/qooxdoo/qooxdoo-compiler/issues), please raise any questions there or on [Gitter at qooxdoo/qxcompiler](https://gitter.im/qooxdoo/qxcompiler).
+
+Regards
+The Qooxdoo Development Team
+
+
+
 [![Build Status](https://travis-ci.org/qooxdoo/qooxdoo-cli.svg?branch=master)](https://travis-ci.org/qooxdoo/qooxdoo-cli)
 
 This command line utility allows you create, build and manage [qooxdoo](http://www.qooxdoo.org) applications.
