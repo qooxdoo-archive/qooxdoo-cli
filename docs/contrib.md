@@ -195,7 +195,7 @@ and applications/demos in a repository. It has the  following syntax:
 
 If you do not include the file, the following paths are assumed (for a contrib)
 
-````
+```
 {
 	"libraries": [
 		{ "path": "." }
